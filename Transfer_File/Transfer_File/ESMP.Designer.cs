@@ -20,9 +20,9 @@ namespace Transfer_File {
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
-    [global::System.Xml.Serialization.XmlRootAttribute("DataSet1")]
+    [global::System.Xml.Serialization.XmlRootAttribute("ESMP")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    public partial class DataSet1 : global::System.Data.DataSet {
+    internal partial class ESMP : global::System.Data.DataSet {
         
         private T30DataTable tableT30;
         
@@ -30,7 +30,7 @@ namespace Transfer_File {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public DataSet1() {
+        public ESMP() {
             this.BeginInit();
             this.InitClass();
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -41,7 +41,7 @@ namespace Transfer_File {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        protected DataSet1(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+        protected ESMP(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                 base(info, context, false) {
             if ((this.IsBinarySerialized(info, context) == true)) {
                 this.InitVars(false);
@@ -127,7 +127,7 @@ namespace Transfer_File {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         public override global::System.Data.DataSet Clone() {
-            DataSet1 cln = ((DataSet1)(base.Clone()));
+            ESMP cln = ((ESMP)(base.Clone()));
             cln.InitVars();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
@@ -199,9 +199,8 @@ namespace Transfer_File {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitClass() {
-            this.DataSetName = "DataSet1";
+            this.DataSetName = "ESMP";
             this.Prefix = "";
-            this.Namespace = "http://tempuri.org/DataSet1.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
             this.tableT30 = new T30DataTable();
@@ -225,7 +224,7 @@ namespace Transfer_File {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-            DataSet1 ds = new DataSet1();
+            ESMP ds = new ESMP();
             global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
             global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
             global::System.Xml.Schema.XmlSchemaAny any = new global::System.Xml.Schema.XmlSchemaAny();
@@ -571,26 +570,26 @@ namespace Transfer_File {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public T30Row AddT30Row(
                         string _STOCK_NO, 
-                        string _BULL_PRICE, 
-                        string _LDC_PRICE, 
-                        string _BEAR_PRICE, 
-                        string _LAST_MTH_DATE, 
-                        string SETTYPE, 
-                        string _MARK_W, 
-                        string _MARK_P, 
-                        string _MARK_L, 
+                        decimal _BULL_PRICE, 
+                        decimal _LDC_PRICE, 
+                        decimal _BEAR_PRICE, 
+                        int _LAST_MTH_DATE, 
+                        char SETTYPE, 
+                        char _MARK_W, 
+                        char _MARK_P, 
+                        char _MARK_L, 
                         string _IND_CODE, 
                         string _STK_CODE, 
-                        string _MARK_M, 
+                        char _MARK_M, 
                         string _STOCK_NAME, 
-                        string _MATCH_INTERNAL, 
-                        string _ORDER_LIMIT, 
-                        string _ORDERS_LIMIT, 
-                        string _PREPAY_RATE, 
-                        string _MARK_S, 
-                        string _MARK_F, 
-                        string _MARK_DAY_TRADE, 
-                        string _STK_CTGCD, 
+                        int _MATCH_INTERNAL, 
+                        int _ORDER_LIMIT, 
+                        int _ORDERS_LIMIT, 
+                        int _PREPAY_RATE, 
+                        char _MARK_S, 
+                        char _MARK_F, 
+                        char _MARK_DAY_TRADE, 
+                        char _STK_CTGCD, 
                         string FILLER) {
                 T30Row rowT30Row = ((T30Row)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
@@ -669,33 +668,33 @@ namespace Transfer_File {
                 this._columnSTOCK_NO.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "_columnSTOCK_NO");
                 this._columnSTOCK_NO.ExtendedProperties.Add("Generator_UserColumnName", "STOCK-NO");
                 base.Columns.Add(this._columnSTOCK_NO);
-                this._columnBULL_PRICE = new global::System.Data.DataColumn("BULL-PRICE", typeof(string), null, global::System.Data.MappingType.Element);
+                this._columnBULL_PRICE = new global::System.Data.DataColumn("BULL-PRICE", typeof(decimal), null, global::System.Data.MappingType.Element);
                 this._columnBULL_PRICE.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "_columnBULL_PRICE");
                 this._columnBULL_PRICE.ExtendedProperties.Add("Generator_UserColumnName", "BULL-PRICE");
                 base.Columns.Add(this._columnBULL_PRICE);
-                this._columnLDC_PRICE = new global::System.Data.DataColumn("LDC-PRICE", typeof(string), null, global::System.Data.MappingType.Element);
+                this._columnLDC_PRICE = new global::System.Data.DataColumn("LDC-PRICE", typeof(decimal), null, global::System.Data.MappingType.Element);
                 this._columnLDC_PRICE.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "_columnLDC_PRICE");
                 this._columnLDC_PRICE.ExtendedProperties.Add("Generator_UserColumnName", "LDC-PRICE");
                 base.Columns.Add(this._columnLDC_PRICE);
-                this._columnBEAR_PRICE = new global::System.Data.DataColumn("BEAR-PRICE", typeof(string), null, global::System.Data.MappingType.Element);
+                this._columnBEAR_PRICE = new global::System.Data.DataColumn("BEAR-PRICE", typeof(decimal), null, global::System.Data.MappingType.Element);
                 this._columnBEAR_PRICE.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "_columnBEAR_PRICE");
                 this._columnBEAR_PRICE.ExtendedProperties.Add("Generator_UserColumnName", "BEAR-PRICE");
                 base.Columns.Add(this._columnBEAR_PRICE);
-                this._columnLAST_MTH_DATE = new global::System.Data.DataColumn("LAST-MTH-DATE", typeof(string), null, global::System.Data.MappingType.Element);
+                this._columnLAST_MTH_DATE = new global::System.Data.DataColumn("LAST-MTH-DATE", typeof(int), null, global::System.Data.MappingType.Element);
                 this._columnLAST_MTH_DATE.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "_columnLAST_MTH_DATE");
                 this._columnLAST_MTH_DATE.ExtendedProperties.Add("Generator_UserColumnName", "LAST-MTH-DATE");
                 base.Columns.Add(this._columnLAST_MTH_DATE);
-                this.columnSETTYPE = new global::System.Data.DataColumn("SETTYPE", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnSETTYPE = new global::System.Data.DataColumn("SETTYPE", typeof(char), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSETTYPE);
-                this._columnMARK_W = new global::System.Data.DataColumn("MARK-W", typeof(string), null, global::System.Data.MappingType.Element);
+                this._columnMARK_W = new global::System.Data.DataColumn("MARK-W", typeof(char), null, global::System.Data.MappingType.Element);
                 this._columnMARK_W.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "_columnMARK_W");
                 this._columnMARK_W.ExtendedProperties.Add("Generator_UserColumnName", "MARK-W");
                 base.Columns.Add(this._columnMARK_W);
-                this._columnMARK_P = new global::System.Data.DataColumn("MARK-P", typeof(string), null, global::System.Data.MappingType.Element);
+                this._columnMARK_P = new global::System.Data.DataColumn("MARK-P", typeof(char), null, global::System.Data.MappingType.Element);
                 this._columnMARK_P.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "_columnMARK_P");
                 this._columnMARK_P.ExtendedProperties.Add("Generator_UserColumnName", "MARK-P");
                 base.Columns.Add(this._columnMARK_P);
-                this._columnMARK_L = new global::System.Data.DataColumn("MARK-L", typeof(string), null, global::System.Data.MappingType.Element);
+                this._columnMARK_L = new global::System.Data.DataColumn("MARK-L", typeof(char), null, global::System.Data.MappingType.Element);
                 this._columnMARK_L.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "_columnMARK_L");
                 this._columnMARK_L.ExtendedProperties.Add("Generator_UserColumnName", "MARK-L");
                 base.Columns.Add(this._columnMARK_L);
@@ -707,7 +706,7 @@ namespace Transfer_File {
                 this._columnSTK_CODE.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "_columnSTK_CODE");
                 this._columnSTK_CODE.ExtendedProperties.Add("Generator_UserColumnName", "STK-CODE");
                 base.Columns.Add(this._columnSTK_CODE);
-                this._columnMARK_M = new global::System.Data.DataColumn("MARK-M", typeof(string), null, global::System.Data.MappingType.Element);
+                this._columnMARK_M = new global::System.Data.DataColumn("MARK-M", typeof(char), null, global::System.Data.MappingType.Element);
                 this._columnMARK_M.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "_columnMARK_M");
                 this._columnMARK_M.ExtendedProperties.Add("Generator_UserColumnName", "MARK-M");
                 base.Columns.Add(this._columnMARK_M);
@@ -715,35 +714,35 @@ namespace Transfer_File {
                 this._columnSTOCK_NAME.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "_columnSTOCK_NAME");
                 this._columnSTOCK_NAME.ExtendedProperties.Add("Generator_UserColumnName", "STOCK-NAME");
                 base.Columns.Add(this._columnSTOCK_NAME);
-                this._columnMATCH_INTERNAL = new global::System.Data.DataColumn("MATCH-INTERNAL", typeof(string), null, global::System.Data.MappingType.Element);
+                this._columnMATCH_INTERNAL = new global::System.Data.DataColumn("MATCH-INTERNAL", typeof(int), null, global::System.Data.MappingType.Element);
                 this._columnMATCH_INTERNAL.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "_columnMATCH_INTERNAL");
                 this._columnMATCH_INTERNAL.ExtendedProperties.Add("Generator_UserColumnName", "MATCH-INTERNAL");
                 base.Columns.Add(this._columnMATCH_INTERNAL);
-                this._columnORDER_LIMIT = new global::System.Data.DataColumn("ORDER-LIMIT", typeof(string), null, global::System.Data.MappingType.Element);
+                this._columnORDER_LIMIT = new global::System.Data.DataColumn("ORDER-LIMIT", typeof(int), null, global::System.Data.MappingType.Element);
                 this._columnORDER_LIMIT.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "_columnORDER_LIMIT");
                 this._columnORDER_LIMIT.ExtendedProperties.Add("Generator_UserColumnName", "ORDER-LIMIT");
                 base.Columns.Add(this._columnORDER_LIMIT);
-                this._columnORDERS_LIMIT = new global::System.Data.DataColumn("ORDERS-LIMIT", typeof(string), null, global::System.Data.MappingType.Element);
+                this._columnORDERS_LIMIT = new global::System.Data.DataColumn("ORDERS-LIMIT", typeof(int), null, global::System.Data.MappingType.Element);
                 this._columnORDERS_LIMIT.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "_columnORDERS_LIMIT");
                 this._columnORDERS_LIMIT.ExtendedProperties.Add("Generator_UserColumnName", "ORDERS-LIMIT");
                 base.Columns.Add(this._columnORDERS_LIMIT);
-                this._columnPREPAY_RATE = new global::System.Data.DataColumn("PREPAY-RATE", typeof(string), null, global::System.Data.MappingType.Element);
+                this._columnPREPAY_RATE = new global::System.Data.DataColumn("PREPAY-RATE", typeof(int), null, global::System.Data.MappingType.Element);
                 this._columnPREPAY_RATE.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "_columnPREPAY_RATE");
                 this._columnPREPAY_RATE.ExtendedProperties.Add("Generator_UserColumnName", "PREPAY-RATE");
                 base.Columns.Add(this._columnPREPAY_RATE);
-                this._columnMARK_S = new global::System.Data.DataColumn("MARK-S", typeof(string), null, global::System.Data.MappingType.Element);
+                this._columnMARK_S = new global::System.Data.DataColumn("MARK-S", typeof(char), null, global::System.Data.MappingType.Element);
                 this._columnMARK_S.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "_columnMARK_S");
                 this._columnMARK_S.ExtendedProperties.Add("Generator_UserColumnName", "MARK-S");
                 base.Columns.Add(this._columnMARK_S);
-                this._columnMARK_F = new global::System.Data.DataColumn("MARK-F", typeof(string), null, global::System.Data.MappingType.Element);
+                this._columnMARK_F = new global::System.Data.DataColumn("MARK-F", typeof(char), null, global::System.Data.MappingType.Element);
                 this._columnMARK_F.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "_columnMARK_F");
                 this._columnMARK_F.ExtendedProperties.Add("Generator_UserColumnName", "MARK-F");
                 base.Columns.Add(this._columnMARK_F);
-                this._columnMARK_DAY_TRADE = new global::System.Data.DataColumn("MARK-DAY-TRADE", typeof(string), null, global::System.Data.MappingType.Element);
+                this._columnMARK_DAY_TRADE = new global::System.Data.DataColumn("MARK-DAY-TRADE", typeof(char), null, global::System.Data.MappingType.Element);
                 this._columnMARK_DAY_TRADE.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "_columnMARK_DAY_TRADE");
                 this._columnMARK_DAY_TRADE.ExtendedProperties.Add("Generator_UserColumnName", "MARK-DAY-TRADE");
                 base.Columns.Add(this._columnMARK_DAY_TRADE);
-                this._columnSTK_CTGCD = new global::System.Data.DataColumn("STK-CTGCD", typeof(string), null, global::System.Data.MappingType.Element);
+                this._columnSTK_CTGCD = new global::System.Data.DataColumn("STK-CTGCD", typeof(char), null, global::System.Data.MappingType.Element);
                 this._columnSTK_CTGCD.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "_columnSTK_CTGCD");
                 this._columnSTK_CTGCD.ExtendedProperties.Add("Generator_UserColumnName", "STK-CTGCD");
                 base.Columns.Add(this._columnSTK_CTGCD);
@@ -816,7 +815,7 @@ namespace Transfer_File {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DataSet1 ds = new DataSet1();
+                ESMP ds = new ESMP();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -907,10 +906,10 @@ namespace Transfer_File {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string _BULL_PRICE {
+            public decimal _BULL_PRICE {
                 get {
                     try {
-                        return ((string)(this[this.tableT30._BULL_PRICEColumn]));
+                        return ((decimal)(this[this.tableT30._BULL_PRICEColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("資料表 \'T30\' 中資料行 \'BULL-PRICE\' 的值是 DBNull。", e);
@@ -923,10 +922,10 @@ namespace Transfer_File {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string _LDC_PRICE {
+            public decimal _LDC_PRICE {
                 get {
                     try {
-                        return ((string)(this[this.tableT30._LDC_PRICEColumn]));
+                        return ((decimal)(this[this.tableT30._LDC_PRICEColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("資料表 \'T30\' 中資料行 \'LDC-PRICE\' 的值是 DBNull。", e);
@@ -939,10 +938,10 @@ namespace Transfer_File {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string _BEAR_PRICE {
+            public decimal _BEAR_PRICE {
                 get {
                     try {
-                        return ((string)(this[this.tableT30._BEAR_PRICEColumn]));
+                        return ((decimal)(this[this.tableT30._BEAR_PRICEColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("資料表 \'T30\' 中資料行 \'BEAR-PRICE\' 的值是 DBNull。", e);
@@ -955,10 +954,10 @@ namespace Transfer_File {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string _LAST_MTH_DATE {
+            public int _LAST_MTH_DATE {
                 get {
                     try {
-                        return ((string)(this[this.tableT30._LAST_MTH_DATEColumn]));
+                        return ((int)(this[this.tableT30._LAST_MTH_DATEColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("資料表 \'T30\' 中資料行 \'LAST-MTH-DATE\' 的值是 DBNull。", e);
@@ -971,10 +970,10 @@ namespace Transfer_File {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string SETTYPE {
+            public char SETTYPE {
                 get {
                     try {
-                        return ((string)(this[this.tableT30.SETTYPEColumn]));
+                        return ((char)(this[this.tableT30.SETTYPEColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("資料表 \'T30\' 中資料行 \'SETTYPE\' 的值是 DBNull。", e);
@@ -987,10 +986,10 @@ namespace Transfer_File {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string _MARK_W {
+            public char _MARK_W {
                 get {
                     try {
-                        return ((string)(this[this.tableT30._MARK_WColumn]));
+                        return ((char)(this[this.tableT30._MARK_WColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("資料表 \'T30\' 中資料行 \'MARK-W\' 的值是 DBNull。", e);
@@ -1003,10 +1002,10 @@ namespace Transfer_File {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string _MARK_P {
+            public char _MARK_P {
                 get {
                     try {
-                        return ((string)(this[this.tableT30._MARK_PColumn]));
+                        return ((char)(this[this.tableT30._MARK_PColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("資料表 \'T30\' 中資料行 \'MARK-P\' 的值是 DBNull。", e);
@@ -1019,10 +1018,10 @@ namespace Transfer_File {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string _MARK_L {
+            public char _MARK_L {
                 get {
                     try {
-                        return ((string)(this[this.tableT30._MARK_LColumn]));
+                        return ((char)(this[this.tableT30._MARK_LColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("資料表 \'T30\' 中資料行 \'MARK-L\' 的值是 DBNull。", e);
@@ -1067,10 +1066,10 @@ namespace Transfer_File {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string _MARK_M {
+            public char _MARK_M {
                 get {
                     try {
-                        return ((string)(this[this.tableT30._MARK_MColumn]));
+                        return ((char)(this[this.tableT30._MARK_MColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("資料表 \'T30\' 中資料行 \'MARK-M\' 的值是 DBNull。", e);
@@ -1099,10 +1098,10 @@ namespace Transfer_File {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string _MATCH_INTERNAL {
+            public int _MATCH_INTERNAL {
                 get {
                     try {
-                        return ((string)(this[this.tableT30._MATCH_INTERNALColumn]));
+                        return ((int)(this[this.tableT30._MATCH_INTERNALColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("資料表 \'T30\' 中資料行 \'MATCH-INTERNAL\' 的值是 DBNull。", e);
@@ -1115,10 +1114,10 @@ namespace Transfer_File {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string _ORDER_LIMIT {
+            public int _ORDER_LIMIT {
                 get {
                     try {
-                        return ((string)(this[this.tableT30._ORDER_LIMITColumn]));
+                        return ((int)(this[this.tableT30._ORDER_LIMITColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("資料表 \'T30\' 中資料行 \'ORDER-LIMIT\' 的值是 DBNull。", e);
@@ -1131,10 +1130,10 @@ namespace Transfer_File {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string _ORDERS_LIMIT {
+            public int _ORDERS_LIMIT {
                 get {
                     try {
-                        return ((string)(this[this.tableT30._ORDERS_LIMITColumn]));
+                        return ((int)(this[this.tableT30._ORDERS_LIMITColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("資料表 \'T30\' 中資料行 \'ORDERS-LIMIT\' 的值是 DBNull。", e);
@@ -1147,10 +1146,10 @@ namespace Transfer_File {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string _PREPAY_RATE {
+            public int _PREPAY_RATE {
                 get {
                     try {
-                        return ((string)(this[this.tableT30._PREPAY_RATEColumn]));
+                        return ((int)(this[this.tableT30._PREPAY_RATEColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("資料表 \'T30\' 中資料行 \'PREPAY-RATE\' 的值是 DBNull。", e);
@@ -1163,10 +1162,10 @@ namespace Transfer_File {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string _MARK_S {
+            public char _MARK_S {
                 get {
                     try {
-                        return ((string)(this[this.tableT30._MARK_SColumn]));
+                        return ((char)(this[this.tableT30._MARK_SColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("資料表 \'T30\' 中資料行 \'MARK-S\' 的值是 DBNull。", e);
@@ -1179,10 +1178,10 @@ namespace Transfer_File {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string _MARK_F {
+            public char _MARK_F {
                 get {
                     try {
-                        return ((string)(this[this.tableT30._MARK_FColumn]));
+                        return ((char)(this[this.tableT30._MARK_FColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("資料表 \'T30\' 中資料行 \'MARK-F\' 的值是 DBNull。", e);
@@ -1195,10 +1194,10 @@ namespace Transfer_File {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string _MARK_DAY_TRADE {
+            public char _MARK_DAY_TRADE {
                 get {
                     try {
-                        return ((string)(this[this.tableT30._MARK_DAY_TRADEColumn]));
+                        return ((char)(this[this.tableT30._MARK_DAY_TRADEColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("資料表 \'T30\' 中資料行 \'MARK-DAY-TRADE\' 的值是 DBNull。", e);
@@ -1211,10 +1210,10 @@ namespace Transfer_File {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string _STK_CTGCD {
+            public char _STK_CTGCD {
                 get {
                     try {
-                        return ((string)(this[this.tableT30._STK_CTGCDColumn]));
+                        return ((char)(this[this.tableT30._STK_CTGCDColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("資料表 \'T30\' 中資料行 \'STK-CTGCD\' 的值是 DBNull。", e);
