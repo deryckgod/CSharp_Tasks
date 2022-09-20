@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "nS2Ce2y2g4qESKfYdOCqlEYaPVgFYfFcjKIyeME2NApP4eLhS8rHHnX0BJ6P+qkmlVf5tc9iGPGpzztqJQhs8g==",
+  "dgSpecHash": "ejFiQW8rRd9FCS7ZhXwVLJ7ILq1AjPgxDLE8mJt4ASrLw3iLR46ejrKG2HoNZeqGuqS1/veVKvYQa63XqsA/Jw==",
   "success": true,
-  "projectFilePath": "D:\\Desktop\\ALPED\\Systex\\Git_Repository\\CSharp_Tasks\\Transfer_File\\Transfer_File\\Transfer_File.csproj",
+  "projectFilePath": "D:\\Desktop\\ALPED\\Systex\\Git_Repository\\CSharp_Tasks\\deryckgod\\CSharp_Tasks\\Transfer_File\\Transfer_File\\Transfer_File.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\41072\\.nuget\\packages\\google.protobuf\\3.19.4\\google.protobuf.3.19.4.nupkg.sha512",
     "C:\\Users\\41072\\.nuget\\packages\\k4os.compression.lz4\\1.2.6\\k4os.compression.lz4.1.2.6.nupkg.sha512",
