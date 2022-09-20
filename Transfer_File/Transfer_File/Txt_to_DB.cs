@@ -43,7 +43,7 @@ namespace Transfer_File
             return false;
         }
 
-        public StringBuilder TxtToMysql(MySqlConnection mySqlConnection, ref bool checkFile)
+        public virtual StringBuilder TxtToMysql(MySqlConnection mySqlConnection, ref bool checkFile)
         {
             stringHistoryTemp = new StringBuilder();
 
@@ -65,7 +65,7 @@ namespace Transfer_File
             return stringHistory;
         }
 
-        public StringBuilder InputDataToMysql(MySqlConnection mySqlConnection, String fileString)
+        public virtual StringBuilder InputDataToMysql(MySqlConnection mySqlConnection, String fileString)
         {
             List<string> fileStringList = new List<string>();
             byte[] currentByteString = new byte[101]; // 存取當前100個byte資料
