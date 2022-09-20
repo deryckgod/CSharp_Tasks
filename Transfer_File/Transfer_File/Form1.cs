@@ -16,7 +16,6 @@ namespace Transfer_File
         StringBuilder stringHistoryTemp;
         bool checkFile = false;
 
-        ESMP eSMP;
         Search_from_Mysql search_From_Mysql;
         Txt_to_DB txt_To_DB;
         MySqlConnection mySqlConnection;
@@ -174,8 +173,6 @@ namespace Transfer_File
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            eSMP = new ESMP();
-            eSMP.T30_Load(dataSet);
         }
     }
 }
