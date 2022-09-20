@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSet1" targetNamespace="http://tempuri.org/DataSet1.xsd" xmlns:mstns="http://tempuri.org/DataSet1.xsd" xmlns="http://tempuri.org/DataSet1.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSet1" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_UserDSName="DataSet1" msprop:Generator_DataSetName="DataSet1">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="T30" msprop:Generator_RowEvHandlerName="T30RowChangeEventHandler" msprop:Generator_RowDeletedName="T30RowDeleted" msprop:Generator_RowDeletingName="T30RowDeleting" msprop:Generator_RowEvArgName="T30RowChangeEvent" msprop:Generator_TablePropName="T30" msprop:Generator_RowChangedName="T30RowChanged" msprop:Generator_RowChangingName="T30RowChanging" msprop:Generator_TableClassName="T30DataTable" msprop:Generator_RowClassName="T30Row" msprop:Generator_TableVarName="tableT30" msprop:Generator_UserTableName="T30">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="STOCK-NO" msprop:Generator_ColumnPropNameInRow="_STOCK_NO" msprop:Generator_ColumnPropNameInTable="_STOCK_NOColumn" msprop:Generator_ColumnVarNameInTable="_columnSTOCK_NO" msprop:Generator_UserColumnName="STOCK-NO" type="xs:string" minOccurs="0" />
+              <xs:element name="BULL-PRICE" msprop:Generator_ColumnPropNameInRow="_BULL_PRICE" msprop:Generator_ColumnPropNameInTable="_BULL_PRICEColumn" msprop:Generator_ColumnVarNameInTable="_columnBULL_PRICE" msprop:Generator_UserColumnName="BULL-PRICE" type="xs:string" minOccurs="0" />
+              <xs:element name="LDC-PRICE" msprop:Generator_ColumnPropNameInRow="_LDC_PRICE" msprop:Generator_ColumnPropNameInTable="_LDC_PRICEColumn" msprop:Generator_ColumnVarNameInTable="_columnLDC_PRICE" msprop:Generator_UserColumnName="LDC-PRICE" type="xs:string" minOccurs="0" />
+              <xs:element name="BEAR-PRICE" msprop:Generator_ColumnPropNameInRow="_BEAR_PRICE" msprop:Generator_ColumnPropNameInTable="_BEAR_PRICEColumn" msprop:Generator_ColumnVarNameInTable="_columnBEAR_PRICE" msprop:Generator_UserColumnName="BEAR-PRICE" type="xs:string" minOccurs="0" />
+              <xs:element name="LAST-MTH-DATE" msprop:Generator_ColumnPropNameInRow="_LAST_MTH_DATE" msprop:Generator_ColumnPropNameInTable="_LAST_MTH_DATEColumn" msprop:Generator_ColumnVarNameInTable="_columnLAST_MTH_DATE" msprop:Generator_UserColumnName="LAST-MTH-DATE" type="xs:string" minOccurs="0" />
+              <xs:element name="SETTYPE" msprop:Generator_ColumnPropNameInRow="SETTYPE" msprop:Generator_ColumnPropNameInTable="SETTYPEColumn" msprop:Generator_ColumnVarNameInTable="columnSETTYPE" msprop:Generator_UserColumnName="SETTYPE" type="xs:string" minOccurs="0" />
+              <xs:element name="MARK-W" msprop:Generator_ColumnPropNameInRow="_MARK_W" msprop:Generator_ColumnPropNameInTable="_MARK_WColumn" msprop:Generator_ColumnVarNameInTable="_columnMARK_W" msprop:Generator_UserColumnName="MARK-W" type="xs:string" minOccurs="0" />
+              <xs:element name="MARK-P" msprop:Generator_ColumnPropNameInRow="_MARK_P" msprop:Generator_ColumnPropNameInTable="_MARK_PColumn" msprop:Generator_ColumnVarNameInTable="_columnMARK_P" msprop:Generator_UserColumnName="MARK-P" type="xs:string" minOccurs="0" />
+              <xs:element name="MARK-L" msprop:Generator_ColumnPropNameInRow="_MARK_L" msprop:Generator_ColumnPropNameInTable="_MARK_LColumn" msprop:Generator_ColumnVarNameInTable="_columnMARK_L" msprop:Generator_UserColumnName="MARK-L" type="xs:string" minOccurs="0" />
+              <xs:element name="IND-CODE" msprop:Generator_ColumnPropNameInRow="_IND_CODE" msprop:Generator_ColumnPropNameInTable="_IND_CODEColumn" msprop:Generator_ColumnVarNameInTable="_columnIND_CODE" msprop:Generator_UserColumnName="IND-CODE" type="xs:string" minOccurs="0" />
+              <xs:element name="STK-CODE" msprop:Generator_ColumnPropNameInRow="_STK_CODE" msprop:Generator_ColumnPropNameInTable="_STK_CODEColumn" msprop:Generator_ColumnVarNameInTable="_columnSTK_CODE" msprop:Generator_UserColumnName="STK-CODE" type="xs:string" minOccurs="0" />
+              <xs:element name="MARK-M" msprop:Generator_ColumnPropNameInRow="_MARK_M" msprop:Generator_ColumnPropNameInTable="_MARK_MColumn" msprop:Generator_ColumnVarNameInTable="_columnMARK_M" msprop:Generator_UserColumnName="MARK-M" type="xs:string" minOccurs="0" />
+              <xs:element name="STOCK-NAME" msprop:Generator_ColumnPropNameInRow="_STOCK_NAME" msprop:Generator_ColumnPropNameInTable="_STOCK_NAMEColumn" msprop:Generator_ColumnVarNameInTable="_columnSTOCK_NAME" msprop:Generator_UserColumnName="STOCK-NAME" type="xs:string" minOccurs="0" />
+              <xs:element name="MATCH-INTERNAL" msprop:Generator_ColumnPropNameInRow="_MATCH_INTERNAL" msprop:Generator_ColumnPropNameInTable="_MATCH_INTERNALColumn" msprop:Generator_ColumnVarNameInTable="_columnMATCH_INTERNAL" msprop:Generator_UserColumnName="MATCH-INTERNAL" type="xs:string" minOccurs="0" />
+              <xs:element name="ORDER-LIMIT" msprop:Generator_ColumnPropNameInRow="_ORDER_LIMIT" msprop:Generator_ColumnPropNameInTable="_ORDER_LIMITColumn" msprop:Generator_ColumnVarNameInTable="_columnORDER_LIMIT" msprop:Generator_UserColumnName="ORDER-LIMIT" type="xs:string" minOccurs="0" />
+              <xs:element name="ORDERS-LIMIT" msprop:Generator_ColumnPropNameInRow="_ORDERS_LIMIT" msprop:Generator_ColumnPropNameInTable="_ORDERS_LIMITColumn" msprop:Generator_ColumnVarNameInTable="_columnORDERS_LIMIT" msprop:Generator_UserColumnName="ORDERS-LIMIT" type="xs:string" minOccurs="0" />
+              <xs:element name="PREPAY-RATE" msprop:Generator_ColumnPropNameInRow="_PREPAY_RATE" msprop:Generator_ColumnPropNameInTable="_PREPAY_RATEColumn" msprop:Generator_ColumnVarNameInTable="_columnPREPAY_RATE" msprop:Generator_UserColumnName="PREPAY-RATE" type="xs:string" minOccurs="0" />
+              <xs:element name="MARK-S" msprop:Generator_ColumnPropNameInRow="_MARK_S" msprop:Generator_ColumnPropNameInTable="_MARK_SColumn" msprop:Generator_ColumnVarNameInTable="_columnMARK_S" msprop:Generator_UserColumnName="MARK-S" type="xs:string" minOccurs="0" />
+              <xs:element name="MARK-F" msprop:Generator_ColumnPropNameInRow="_MARK_F" msprop:Generator_ColumnPropNameInTable="_MARK_FColumn" msprop:Generator_ColumnVarNameInTable="_columnMARK_F" msprop:Generator_UserColumnName="MARK-F" type="xs:string" minOccurs="0" />
+              <xs:element name="MARK-DAY-TRADE" msprop:Generator_ColumnPropNameInRow="_MARK_DAY_TRADE" msprop:Generator_ColumnPropNameInTable="_MARK_DAY_TRADEColumn" msprop:Generator_ColumnVarNameInTable="_columnMARK_DAY_TRADE" msprop:Generator_UserColumnName="MARK-DAY-TRADE" type="xs:string" minOccurs="0" />
+              <xs:element name="STK-CTGCD" msprop:Generator_ColumnPropNameInRow="_STK_CTGCD" msprop:Generator_ColumnPropNameInTable="_STK_CTGCDColumn" msprop:Generator_ColumnVarNameInTable="_columnSTK_CTGCD" msprop:Generator_UserColumnName="STK-CTGCD" type="xs:string" minOccurs="0" />
+              <xs:element name="FILLER" msprop:Generator_ColumnPropNameInRow="FILLER" msprop:Generator_ColumnPropNameInTable="FILLERColumn" msprop:Generator_ColumnVarNameInTable="columnFILLER" msprop:Generator_UserColumnName="FILLER" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

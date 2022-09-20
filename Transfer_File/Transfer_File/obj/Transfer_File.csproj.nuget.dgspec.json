@@ -47,6 +47,10 @@
             "MySql.Data": {
               "target": "Package",
               "version": "[8.0.30, )"
+            },
+            "dotConnect.Express.for.MySQL": {
+              "target": "Package",
+              "version": "[9.0.0, )"
             }
           },
           "imports": [

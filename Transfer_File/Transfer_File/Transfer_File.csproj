@@ -9,7 +9,23 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="dotConnect.Express.for.MySQL" Version="9.0.0" />
     <PackageReference Include="MySql.Data" Version="8.0.30" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="ESMP.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ESMP.xsd</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="ESMP.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ESMP.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
 
 </Project>
