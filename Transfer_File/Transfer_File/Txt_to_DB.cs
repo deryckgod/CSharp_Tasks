@@ -53,7 +53,6 @@ namespace Transfer_File
             {
                 foreach (FileInfo fileInfo in directoryInfo.GetFiles("*.TXT"))
                 {
-                    MessageBox.Show(fileInfo.ToString());
                     checkFile = true;
                     if (fileInfo.ToString().Contains("T30"))
                     {
