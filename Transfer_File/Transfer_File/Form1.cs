@@ -20,7 +20,7 @@ namespace Transfer_File
 
         Search_from_Mysql search_From_Mysql;
         Txt_to_DB txt_To_DB;
-        MFP085_to_DB mfp085_to_DB;
+        MFP085_to_DB mfp085_to_db;
         MySqlConnection mySqlConnection;
         DirectoryInfo directoryInfo;
         FileSystemWatcher fileSystemWatcher = new FileSystemWatcher();
@@ -113,7 +113,7 @@ namespace Transfer_File
         private void FileSystemWatcher_Created(object sender, FileSystemEventArgs events)
         {
             txt_To_DB = new Txt_to_DB();
-            mfp085_to_DB = new MFP085_to_DB();
+            mfp085_to_db = new MFP085_to_DB();
             directoryInfo = new DirectoryInfo(events.FullPath.ToString()); // 當多個檔案同時轉入時可保留個檔案資訊
             while (true)
             {
@@ -136,7 +136,7 @@ namespace Transfer_File
                             }
                             else if (directoryInfo.Name.ToString().Contains("MFP085"))
                             {
-                                stringHistoryTemp.AppendLine(mfp085_to_DB.InputDataToMysql(mySqlConnection, directoryInfo.FullName.ToString()).ToString());
+                                stringHistoryTemp.AppendLine(mfp085_to_db.InputDataToMysql(mySqlConnection, directoryInfo.FullName.ToString()).ToString());
                             }
                             //stringHistoryTemp.AppendLine(txt_To_DB.InputDataToMysql(mySqlConnection, directoryInfo.FullName.ToString()).ToString()); // 進行解析
                         }
