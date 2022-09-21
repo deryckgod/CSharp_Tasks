@@ -31,24 +31,20 @@ namespace Transfer_File
             InitializeComponent();
             MyFileSystemWatcher();
         }
-        DataSet dataSet = new DataSet();
         public MySqlConnection Connect()
         {
             try
             {
                 mySqlConnection = new MySqlConnection(ConfigurationManager.ConnectionStrings["ConnectionSource"].ConnectionString);
+                if (mySqlConnection.State != ConnectionState.Open)
+                {
+                    mySqlConnection.Open();
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-            }
-            
-
-            if(mySqlConnection.State != ConnectionState.Open)
-            {
-                mySqlConnection.Open();
-            }
-           
+            }           
             return mySqlConnection;
         }
 
@@ -75,12 +71,12 @@ namespace Transfer_File
                 using (mySqlConnection = Connect())
                 {
                     search_From_Mysql = new Search_from_Mysql();
-                    stringHistory = search_From_Mysql.SearchFromMysql(mySqlConnection);
+                    stringHistory = search_From_Mysql.SearchT30FromMysql(mySqlConnection);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("·j´M¨Ò¥~ :" + ex.Message);
+                MessageBox.Show("T30·j´M¨Ò¥~ :" + ex.Message);
             }
                   
         }
@@ -173,6 +169,22 @@ namespace Transfer_File
 
         private void Form1_Load(object sender, EventArgs e)
         {
+        }
+
+        private void btnSearchHFP085_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (mySqlConnection = Connect())
+                {
+                    search_From_Mysql = new Search_from_Mysql();
+                    stringHistory = search_From_Mysql.SearchHFP085FromMysql(mySqlConnection);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("HFP085·j´M¨Ò¥~ :" + ex.Message);
+            }
         }
     }
 }

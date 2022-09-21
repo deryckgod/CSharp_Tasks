@@ -32,6 +32,7 @@
             this.btnConnect = new System.Windows.Forms.Button();
             this.txtExit = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
+            this.btnSearchHFP085 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtCondition
@@ -69,15 +70,26 @@
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(188, 61);
             this.btnSearch.TabIndex = 5;
-            this.btnSearch.Text = "連線(查詢資料)";
+            this.btnSearch.Text = "連線(查詢資料_T30)";
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.BtnSearch_Click);
+            // 
+            // btnSearchHFP085
+            // 
+            this.btnSearchHFP085.Location = new System.Drawing.Point(100, 276);
+            this.btnSearchHFP085.Name = "btnSearchHFP085";
+            this.btnSearchHFP085.Size = new System.Drawing.Size(188, 61);
+            this.btnSearchHFP085.TabIndex = 6;
+            this.btnSearchHFP085.Text = "連線(查詢資料_HFP085)";
+            this.btnSearchHFP085.UseVisualStyleBackColor = true;
+            this.btnSearchHFP085.Click += new System.EventHandler(this.btnSearchHFP085_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1099, 471);
+            this.Controls.Add(this.btnSearchHFP085);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.txtExit);
             this.Controls.Add(this.btnConnect);
@@ -95,5 +107,6 @@
         private Button btnConnect;
         private Button txtExit;
         private Button btnSearch;
+        private Button btnSearchHFP085;
     }
 }
