@@ -81,34 +81,37 @@ namespace Transfer_File
                             mySqlCommand.Parameters.Clear(); // 每次插入都先清除引數
                             try
                             {
-                                // 待處理
-                                //mySqlCommand.Parameters.Add(new MySqlParameter("cfm01", hfp085_data_get_set.Stock_No));
-                                //mySqlCommand.Parameters.Add(new MySqlParameter("BULL_PRICE", hfp085_data_get_set.Bull_Price));
-                                //mySqlCommand.Parameters.Add(new MySqlParameter("LDC_PRICE", hfp085_data_get_set.Ldc_Price));
-                                //mySqlCommand.Parameters.Add(new MySqlParameter("BEAR_PRICE", hfp085_data_get_set.Bear_Price));
-                                //mySqlCommand.Parameters.Add(new MySqlParameter("LAST_MTH_DATE", hfp085_data_get_set.Last_Mth_Date));
-                                //mySqlCommand.Parameters.Add(new MySqlParameter("SETTYPE", hfp085_data_get_set.SetType));
-                                //mySqlCommand.Parameters.Add(new MySqlParameter("MARK_W", hfp085_data_get_set.Mark_W));
-                                //mySqlCommand.Parameters.Add(new MySqlParameter("MARK_P", hfp085_data_get_set.Mark_P));
-                                //mySqlCommand.Parameters.Add(new MySqlParameter("MARK_L", hfp085_data_get_set.Mark_L));
-                                //mySqlCommand.Parameters.Add(new MySqlParameter("IND_CODE", hfp085_data_get_set.Ind_Code));
-                                //mySqlCommand.Parameters.Add(new MySqlParameter("STK_CODE", hfp085_data_get_set.Stk_Code));
-                                //mySqlCommand.Parameters.Add(new MySqlParameter("MARK_M", hfp085_data_get_set.Mark_M));
-                                //mySqlCommand.Parameters.Add(new MySqlParameter("STOCK_NAME", hfp085_data_get_set.Stock_Name));
-                                //mySqlCommand.Parameters.Add(new MySqlParameter("MATCH_INTERVAL", hfp085_data_get_set.Match_Interval));
-                                //mySqlCommand.Parameters.Add(new MySqlParameter("ORDER_LIMIT", hfp085_data_get_set.Order_Limit));
-                                //mySqlCommand.Parameters.Add(new MySqlParameter("ORDERS_LIMIT", hfp085_data_get_set.Orders_Limit));
-                                //mySqlCommand.Parameters.Add(new MySqlParameter("PREPAY_RATE", hfp085_data_get_set.Prepay_Rate));
-                                //mySqlCommand.Parameters.Add(new MySqlParameter("MARK_S", hfp085_data_get_set.Mark_S));
-                                //mySqlCommand.Parameters.Add(new MySqlParameter("MARK_F", hfp085_data_get_set.Mark_F));
-                                //mySqlCommand.Parameters.Add(new MySqlParameter("MARK_DAY_TRADE", hfp085_data_get_set.Mark_Day_Trade));
-                                //mySqlCommand.Parameters.Add(new MySqlParameter("STK_CTGCD", hfp085_data_get_set.Stk_CTGCD));
-                                //mySqlCommand.Parameters.Add(new MySqlParameter("FILLER", hfp085_data_get_set.Filler));
-                                //t30_xsd_rows.AddT30Row(hfp085_data_get_set.Stock_No, hfp085_data_get_set.Bull_Price, hfp085_data_get_set.Ldc_Price, hfp085_data_get_set.Bear_Price,
-                                //    hfp085_data_get_set.Last_Mth_Date, hfp085_data_get_set.SetType, hfp085_data_get_set.Mark_W, hfp085_data_get_set.Mark_P, hfp085_data_get_set.Mark_L,
-                                //    hfp085_data_get_set.Ind_Code, hfp085_data_get_set.Stk_Code, hfp085_data_get_set.Mark_M, hfp085_data_get_set.Stock_Name, hfp085_data_get_set.Match_Interval,
-                                //    hfp085_data_get_set.Order_Limit, hfp085_data_get_set.Orders_Limit, hfp085_data_get_set.Prepay_Rate, hfp085_data_get_set.Mark_S, hfp085_data_get_set.Mark_F,
-                                //    hfp085_data_get_set.Mark_Day_Trade, hfp085_data_get_set.Stk_CTGCD, hfp085_data_get_set.Filler);
+                                mySqlCommand.Parameters.Add(new MySqlParameter("cfm01", hfp085_data_get_set.Cfm01));
+                                mySqlCommand.Parameters.Add(new MySqlParameter("cfm02", hfp085_data_get_set.Cfm02));
+                                mySqlCommand.Parameters.Add(new MySqlParameter("cfm03", hfp085_data_get_set.Cfm03));
+                                mySqlCommand.Parameters.Add(new MySqlParameter("cfm04", hfp085_data_get_set.Cfm04));
+                                mySqlCommand.Parameters.Add(new MySqlParameter("cfm05", hfp085_data_get_set.Cfm05));
+                                mySqlCommand.Parameters.Add(new MySqlParameter("cfm06", hfp085_data_get_set.Cfm06));
+                                mySqlCommand.Parameters.Add(new MySqlParameter("cfm07", hfp085_data_get_set.Cfm07));
+                                mySqlCommand.Parameters.Add(new MySqlParameter("cfm08", hfp085_data_get_set.Cfm08));
+                                mySqlCommand.Parameters.Add(new MySqlParameter("cfm09", hfp085_data_get_set.Cfm09));
+                                mySqlCommand.Parameters.Add(new MySqlParameter("cfm10", hfp085_data_get_set.Cfm10));
+                                mySqlCommand.Parameters.Add(new MySqlParameter("cfm11", hfp085_data_get_set.Cfm11));
+                                mySqlCommand.Parameters.Add(new MySqlParameter("cfm12", hfp085_data_get_set.Cfm12));
+                                mySqlCommand.Parameters.Add(new MySqlParameter("cfm13", hfp085_data_get_set.Cfm13));
+                                mySqlCommand.Parameters.Add(new MySqlParameter("cfm14", hfp085_data_get_set.Cfm14));
+                                mySqlCommand.Parameters.Add(new MySqlParameter("cfm15", hfp085_data_get_set.Cfm15));
+                                mySqlCommand.Parameters.Add(new MySqlParameter("cfm16", hfp085_data_get_set.Cfm16));
+                                mySqlCommand.Parameters.Add(new MySqlParameter("cfm17", hfp085_data_get_set.Cfm17));
+                                mySqlCommand.Parameters.Add(new MySqlParameter("cfm18", hfp085_data_get_set.Cfm18));
+                                mySqlCommand.Parameters.Add(new MySqlParameter("cfm19", hfp085_data_get_set.Cfm19));
+                                mySqlCommand.Parameters.Add(new MySqlParameter("cfm20", hfp085_data_get_set.Cfm20));
+                                mySqlCommand.Parameters.Add(new MySqlParameter("cfm21", hfp085_data_get_set.Cfm21));
+                                mySqlCommand.Parameters.Add(new MySqlParameter("cfm22", hfp085_data_get_set.Cfm22));
+                                mySqlCommand.Parameters.Add(new MySqlParameter("cfm23", hfp085_data_get_set.Cfm23));
+                                mySqlCommand.Parameters.Add(new MySqlParameter("cfm24", hfp085_data_get_set.Cfm24));
+                                mySqlCommand.Parameters.Add(new MySqlParameter("cfm25", hfp085_data_get_set.Cfm25));
+                                hFP085Rows.AddHFP085Row(       hfp085_data_get_set.Cfm01, hfp085_data_get_set.Cfm02, hfp085_data_get_set.Cfm03, hfp085_data_get_set.Cfm04,
+                                    hfp085_data_get_set.Cfm05, hfp085_data_get_set.Cfm06, hfp085_data_get_set.Cfm07, hfp085_data_get_set.Cfm08, hfp085_data_get_set.Cfm09,
+                                    hfp085_data_get_set.Cfm10, hfp085_data_get_set.Cfm11, hfp085_data_get_set.Cfm12, hfp085_data_get_set.Cfm13, hfp085_data_get_set.Cfm14,
+                                    hfp085_data_get_set.Cfm15, hfp085_data_get_set.Cfm16, hfp085_data_get_set.Cfm17, hfp085_data_get_set.Cfm18, hfp085_data_get_set.Cfm19,
+                                    hfp085_data_get_set.Cfm20, hfp085_data_get_set.Cfm21, hfp085_data_get_set.Cfm22, hfp085_data_get_set.Cfm23, hfp085_data_get_set.Cfm24, 
+                                    hfp085_data_get_set.Cfm25);
                             }
                             catch (Exception e)
                             {
