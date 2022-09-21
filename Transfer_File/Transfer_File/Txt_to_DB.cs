@@ -106,12 +106,11 @@ namespace Transfer_File
             {
                 // 在文字框顯示資料
                 stringHistoryTemp.AppendLine(String.Format("收到檔案: {0} \r", fileString));
-
+                int count = 0;
                 foreach (string mainString in fileStringList)
                 {
                     byte[] lineString = Encoding.GetEncoding(950).GetBytes(mainString);
                     
-                    int count = 0;
                     // 插入資料到DB
                     using (MySqlCommand mySqlCommand = mySqlConnection.CreateCommand())
                     {
@@ -196,14 +195,22 @@ namespace Transfer_File
                             }
                         }
                     }
-                    stringHistoryTemp.AppendLine(String.Format("{0} 存入DB完畢 共存入{1}筆\r", fileString, count));
-                    stringHistoryTemp.AppendLine(move_file.MoveFile(fileString, destinationPath)); // 轉移處理完的檔案 並讓stringHistoryTemp暫存轉移的log
-                    // 暫時用不到
-                    //string xsdFile = @"D:\Desktop\ALPED\Systex\Git_Repository\CSharp_Tasks\deryckgod\CSharp_Tasks\Transfer_File\Transfer_File\ESMP.xsd";
-                    //t30_xsd_rows.WriteXmlSchema(xsdFile);
-                    //string xmlFile = @"D:\Desktop\ALPED\Systex\Git_Repository\CSharp_Tasks\deryckgod\CSharp_Tasks\Transfer_File\Transfer_File\ESMP.xml";
-                    //t30_xsd_rows.WriteXml(xmlFile);
                 }
+                stringHistoryTemp.AppendLine(String.Format("{0} 存入DB完畢 共存入{1}筆\r", fileString, count));
+                stringHistoryTemp.AppendLine(move_file.MoveFile(fileString, destinationPath)); // 轉移處理完的檔案 並讓stringHistoryTemp暫存轉移的log
+
+                // 暫時用不到
+                //try
+                //{
+                //string xsdFile = @"D:\Desktop\ALPED\Systex\Git_Repository\CSharp_Tasks\deryckgod\CSharp_Tasks\Transfer_File\Transfer_File\ESMP.xsd";
+                //mFP085Rows.WriteXmlSchema(xsdFile);
+                //string xmlFile = @"D:\Desktop\ALPED\Systex\Git_Repository\CSharp_Tasks\deryckgod\CSharp_Tasks\Transfer_File\Transfer_File\ESMP.xml";
+                //mFP085Rows.WriteXml(xmlFile);
+                //}
+                //catch(Exception e)
+                //{
+                //    MessageBox.Show(e.Message);
+                //}
                 return stringHistoryTemp;
             }
             else

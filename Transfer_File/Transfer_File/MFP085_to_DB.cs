@@ -129,10 +129,17 @@ namespace Transfer_File
                 stringHistoryTemp.AppendLine(move_file.MoveFile(fileString, destinationPath)); // 轉移處理完的檔案 並讓stringHistoryTemp暫存轉移的log
 
                 // 使用xsd會讓 ESMP.xsd的 MFP085 data table消失
-                //string xsdFile = @"D:\Desktop\ALPED\Systex\Git_Repository\CSharp_Tasks\deryckgod\CSharp_Tasks\Transfer_File\Transfer_File\ESMP.xsd";
-                //mFP085Rows.WriteXmlSchema(xsdFile);
-                //string xmlFile = @"D:\Desktop\ALPED\Systex\Git_Repository\CSharp_Tasks\deryckgod\CSharp_Tasks\Transfer_File\Transfer_File\ESMP.xml";
-                //mFP085Rows.WriteXml(xmlFile);
+                //try
+                //{
+                    //string xsdFile = @"D:\Desktop\ALPED\Systex\Git_Repository\CSharp_Tasks\deryckgod\CSharp_Tasks\Transfer_File\Transfer_File\ESMP.xsd";
+                    //mFP085Rows.WriteXmlSchema(xsdFile);
+                    //string xmlFile = @"D:\Desktop\ALPED\Systex\Git_Repository\CSharp_Tasks\deryckgod\CSharp_Tasks\Transfer_File\Transfer_File\ESMP.xml";
+                    //mFP085Rows.WriteXml(xmlFile);
+                //}
+                //catch(Exception e)
+                //{
+                //    MessageBox.Show(e.Message);
+                //}
                 return stringHistoryTemp;
             }
             else
