@@ -53,7 +53,14 @@ namespace Transfer_File
                 foreach (FileInfo fileInfo in directoryInfo.GetFiles("*.TXT"))
                 {
                     checkFile = true;
-                    InputDataToMysql(mySqlConnection, fileInfo.ToString());
+                    if (fileInfo.ToString().Contains("T30"))
+                    {
+                        this.InputDataToMysql(mySqlConnection, fileInfo.ToString());
+                    }
+                    else if (fileInfo.ToString().Contains("HFP085"))
+                    {
+
+                    }
                 }
                 stringHistory = stringHistoryTemp; // 全部掃完再輸出 也可以解決輸出一半的問題
                 checkFile = false; // 原資料夾內處理完畢

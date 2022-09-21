@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Transfer_File
 {
-    internal class HFP085_Data
+    internal class MFP085_Data
     {
         #region 檔案參數
         string cfm01 = "";

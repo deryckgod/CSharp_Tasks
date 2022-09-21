@@ -11,7 +11,7 @@ namespace Transfer_File
     class MFP085_to_DB : Txt_to_DB
     {
         ESMP.HFP085DataTable hFP085Rows;
-        HFP085_Data hfp085_data_get_set;
+        MFP085_Data hfp085_data_get_set;
         Move_File move_File;
         StringBuilder stringHistoryTemp;
 
@@ -23,7 +23,7 @@ namespace Transfer_File
             byte[] currentByteString = new byte[154]; // 存取當前100個byte資料
 
             hFP085Rows = new ESMP.HFP085DataTable(); // xsd 裝載
-            hfp085_data_get_set = new HFP085_Data();
+            hfp085_data_get_set = new MFP085_Data();
             move_File = new Move_File();
             stringHistoryTemp = new StringBuilder();
 
