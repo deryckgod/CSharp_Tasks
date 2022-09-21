@@ -55,7 +55,7 @@ namespace Transfer_File
                 foreach (FileInfo fileInfo in directoryInfo.GetFiles("*.TXT"))
                 {
                     checkFile = true;
-                    // 避免create時 按btnConnect報錯
+                    // 避免create時 按btnConnect有衝突報錯
                     if (!checkOnCreated)
                     {
                         if (fileInfo.ToString().Contains("T30"))
@@ -82,7 +82,7 @@ namespace Transfer_File
                         }
                     }
                 }
-                stringHistory = stringHistoryTemp; // 全部掃完再輸出 也可以解決輸出一半的問題
+                stringHistory = stringHistoryTemp; 
                 checkFile = false; // 原資料夾內處理完畢
             }
             catch(Exception e)
@@ -150,7 +150,7 @@ namespace Transfer_File
 
                             //stringHistoryTemp.AppendLine(String.Format("第{0}筆解析完畢\r", count + 1));
                             #endregion
-                            mySqlCommand.Parameters.Clear(); // 每次插入都先清除引數
+                            mySqlCommand.Parameters.Clear(); 
 
                             #region 添加參數
                             try
@@ -197,20 +197,21 @@ namespace Transfer_File
                     }
                 }
                 stringHistoryTemp.AppendLine(String.Format("{0} 存入DB完畢 共存入{1}筆\r", fileString, count));
-                stringHistoryTemp.AppendLine(move_file.MoveFile(fileString, destinationPath)); // 轉移處理完的檔案 並讓stringHistoryTemp暫存轉移的log
+                stringHistoryTemp.AppendLine(move_file.MoveFile(fileString, destinationPath)); 
 
-                // 暫時用不到
-                //try
-                //{
-                //string xsdFile = @"D:\Desktop\ALPED\Systex\Git_Repository\CSharp_Tasks\deryckgod\CSharp_Tasks\Transfer_File\Transfer_File\ESMP.xsd";
-                //mFP085Rows.WriteXmlSchema(xsdFile);
-                //string xmlFile = @"D:\Desktop\ALPED\Systex\Git_Repository\CSharp_Tasks\deryckgod\CSharp_Tasks\Transfer_File\Transfer_File\ESMP.xml";
-                //mFP085Rows.WriteXml(xmlFile);
-                //}
-                //catch(Exception e)
-                //{
-                //    MessageBox.Show(e.Message);
-                //}
+                /** 暫時用不到xsd輸出
+                try
+                {
+                    string xsdFile = @"D:\Desktop\ALPED\Systex\Git_Repository\CSharp_Tasks\deryckgod\CSharp_Tasks\Transfer_File\Transfer_File\ESMP.xsd";
+                    mFP085Rows.WriteXmlSchema(xsdFile);
+                    string xmlFile = @"D:\Desktop\ALPED\Systex\Git_Repository\CSharp_Tasks\deryckgod\CSharp_Tasks\Transfer_File\Transfer_File\ESMP.xml";
+                    mFP085Rows.WriteXml(xmlFile);
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.Message);
+                }
+                **/
                 return stringHistoryTemp;
             }
             else
