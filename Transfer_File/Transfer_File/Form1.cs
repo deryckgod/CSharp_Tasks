@@ -6,6 +6,7 @@ using System.Configuration;
 using static System.Net.WebRequestMethods;
 using File = System.IO.File;
 using System.Data;
+using System.Reflection;
 
 namespace Transfer_File
 {
@@ -18,6 +19,7 @@ namespace Transfer_File
 
         Search_from_Mysql search_From_Mysql;
         Txt_to_DB txt_To_DB;
+        MFP085_to_DB mfp085_to_DB;
         MySqlConnection mySqlConnection;
         DirectoryInfo directoryInfo;
         FileSystemWatcher fileSystemWatcher = new FileSystemWatcher();
@@ -110,6 +112,7 @@ namespace Transfer_File
         private void FileSystemWatcher_Created(object sender, FileSystemEventArgs events)
         {
             txt_To_DB = new Txt_to_DB();
+            mfp085_to_DB = new MFP085_to_DB();
             directoryInfo = new DirectoryInfo(events.FullPath.ToString()); // 當多個檔案同時轉入時可保留個檔案資訊
             while (true)
             {
@@ -125,7 +128,15 @@ namespace Transfer_File
                         stringHistoryTemp.AppendLine("目錄下共有:" + directoryInfo.Parent.GetDirectories().Count() + "資料夾");
                         using (mySqlConnection = Connect())
                         {
-                            stringHistoryTemp.AppendLine(txt_To_DB.InputDataToMysql(mySqlConnection, directoryInfo.FullName.ToString()).ToString()); // 進行解析
+                            if (directoryInfo.Name.ToString().Contains("T30"))
+                            {
+                                stringHistoryTemp.AppendLine(txt_To_DB.InputDataToMysql(mySqlConnection, directoryInfo.FullName.ToString()).ToString());
+                            }
+                            else if (directoryInfo.Name.ToString().Contains("MFP085"))
+                            {
+                                stringHistoryTemp.AppendLine(mfp085_to_DB.InputDataToMysql(mySqlConnection, directoryInfo.FullName.ToString()).ToString());
+                            }
+                            //stringHistoryTemp.AppendLine(txt_To_DB.InputDataToMysql(mySqlConnection, directoryInfo.FullName.ToString()).ToString()); // 進行解析
                         }
                         stringHistory = stringHistoryTemp; // 從原本的inputDataToMysql輸出移至created下面輸出 避免跟直接txtConditional.Text輸出衝突
                         break;

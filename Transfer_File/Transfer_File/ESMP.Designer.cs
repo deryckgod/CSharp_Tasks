@@ -26,7 +26,7 @@ namespace Transfer_File {
         
         private T30DataTable tableT30;
         
-        private HFP085DataTable tableHFP085;
+        private MFP085DataTable tableMFP085;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -59,8 +59,8 @@ namespace Transfer_File {
                 if ((ds.Tables["T30"] != null)) {
                     base.Tables.Add(new T30DataTable(ds.Tables["T30"]));
                 }
-                if ((ds.Tables["HFP085"] != null)) {
-                    base.Tables.Add(new HFP085DataTable(ds.Tables["HFP085"]));
+                if ((ds.Tables["MFP085"] != null)) {
+                    base.Tables.Add(new MFP085DataTable(ds.Tables["MFP085"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -94,9 +94,9 @@ namespace Transfer_File {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public HFP085DataTable HFP085 {
+        public MFP085DataTable MFP085 {
             get {
-                return this.tableHFP085;
+                return this.tableMFP085;
             }
         }
         
@@ -170,8 +170,8 @@ namespace Transfer_File {
                 if ((ds.Tables["T30"] != null)) {
                     base.Tables.Add(new T30DataTable(ds.Tables["T30"]));
                 }
-                if ((ds.Tables["HFP085"] != null)) {
-                    base.Tables.Add(new HFP085DataTable(ds.Tables["HFP085"]));
+                if ((ds.Tables["MFP085"] != null)) {
+                    base.Tables.Add(new MFP085DataTable(ds.Tables["MFP085"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -212,10 +212,10 @@ namespace Transfer_File {
                     this.tableT30.InitVars();
                 }
             }
-            this.tableHFP085 = ((HFP085DataTable)(base.Tables["HFP085"]));
+            this.tableMFP085 = ((MFP085DataTable)(base.Tables["MFP085"]));
             if ((initTable == true)) {
-                if ((this.tableHFP085 != null)) {
-                    this.tableHFP085.InitVars();
+                if ((this.tableMFP085 != null)) {
+                    this.tableMFP085.InitVars();
                 }
             }
         }
@@ -229,8 +229,8 @@ namespace Transfer_File {
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
             this.tableT30 = new T30DataTable();
             base.Tables.Add(this.tableT30);
-            this.tableHFP085 = new HFP085DataTable();
-            base.Tables.Add(this.tableHFP085);
+            this.tableMFP085 = new MFP085DataTable();
+            base.Tables.Add(this.tableMFP085);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -241,7 +241,7 @@ namespace Transfer_File {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private bool ShouldSerializeHFP085() {
+        private bool ShouldSerializeMFP085() {
             return false;
         }
         
@@ -304,7 +304,7 @@ namespace Transfer_File {
         public delegate void T30RowChangeEventHandler(object sender, T30RowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public delegate void HFP085RowChangeEventHandler(object sender, HFP085RowChangeEvent e);
+        public delegate void MFP085RowChangeEventHandler(object sender, MFP085RowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -914,7 +914,7 @@ namespace Transfer_File {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class HFP085DataTable : global::System.Data.TypedTableBase<HFP085Row> {
+        public partial class MFP085DataTable : global::System.Data.TypedTableBase<MFP085Row> {
             
             private global::System.Data.DataColumn columnCFM01;
             
@@ -968,8 +968,8 @@ namespace Transfer_File {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public HFP085DataTable() {
-                this.TableName = "HFP085";
+            public MFP085DataTable() {
+                this.TableName = "MFP085";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -977,7 +977,7 @@ namespace Transfer_File {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal HFP085DataTable(global::System.Data.DataTable table) {
+            internal MFP085DataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -994,7 +994,7 @@ namespace Transfer_File {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected HFP085DataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected MFP085DataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
@@ -1210,33 +1210,33 @@ namespace Transfer_File {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public HFP085Row this[int index] {
+            public MFP085Row this[int index] {
                 get {
-                    return ((HFP085Row)(this.Rows[index]));
+                    return ((MFP085Row)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event HFP085RowChangeEventHandler HFP085RowChanging;
+            public event MFP085RowChangeEventHandler MFP085RowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event HFP085RowChangeEventHandler HFP085RowChanged;
+            public event MFP085RowChangeEventHandler MFP085RowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event HFP085RowChangeEventHandler HFP085RowDeleting;
+            public event MFP085RowChangeEventHandler MFP085RowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event HFP085RowChangeEventHandler HFP085RowDeleted;
+            public event MFP085RowChangeEventHandler MFP085RowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void AddHFP085Row(HFP085Row row) {
+            public void AddMFP085Row(MFP085Row row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public HFP085Row AddHFP085Row(
+            public MFP085Row AddMFP085Row(
                         string CFM01, 
                         string CFM02, 
                         char CFM03, 
@@ -1262,7 +1262,7 @@ namespace Transfer_File {
                         string CFM23, 
                         int CFM24, 
                         string CFM25) {
-                HFP085Row rowHFP085Row = ((HFP085Row)(this.NewRow()));
+                MFP085Row rowMFP085Row = ((MFP085Row)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         CFM01,
                         CFM02,
@@ -1289,15 +1289,15 @@ namespace Transfer_File {
                         CFM23,
                         CFM24,
                         CFM25};
-                rowHFP085Row.ItemArray = columnValuesArray;
-                this.Rows.Add(rowHFP085Row);
-                return rowHFP085Row;
+                rowMFP085Row.ItemArray = columnValuesArray;
+                this.Rows.Add(rowMFP085Row);
+                return rowMFP085Row;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                HFP085DataTable cln = ((HFP085DataTable)(base.Clone()));
+                MFP085DataTable cln = ((MFP085DataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -1305,7 +1305,7 @@ namespace Transfer_File {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new HFP085DataTable();
+                return new MFP085DataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1395,28 +1395,28 @@ namespace Transfer_File {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public HFP085Row NewHFP085Row() {
-                return ((HFP085Row)(this.NewRow()));
+            public MFP085Row NewMFP085Row() {
+                return ((MFP085Row)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new HFP085Row(builder);
+                return new MFP085Row(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(HFP085Row);
+                return typeof(MFP085Row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.HFP085RowChanged != null)) {
-                    this.HFP085RowChanged(this, new HFP085RowChangeEvent(((HFP085Row)(e.Row)), e.Action));
+                if ((this.MFP085RowChanged != null)) {
+                    this.MFP085RowChanged(this, new MFP085RowChangeEvent(((MFP085Row)(e.Row)), e.Action));
                 }
             }
             
@@ -1424,8 +1424,8 @@ namespace Transfer_File {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.HFP085RowChanging != null)) {
-                    this.HFP085RowChanging(this, new HFP085RowChangeEvent(((HFP085Row)(e.Row)), e.Action));
+                if ((this.MFP085RowChanging != null)) {
+                    this.MFP085RowChanging(this, new MFP085RowChangeEvent(((MFP085Row)(e.Row)), e.Action));
                 }
             }
             
@@ -1433,8 +1433,8 @@ namespace Transfer_File {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.HFP085RowDeleted != null)) {
-                    this.HFP085RowDeleted(this, new HFP085RowChangeEvent(((HFP085Row)(e.Row)), e.Action));
+                if ((this.MFP085RowDeleted != null)) {
+                    this.MFP085RowDeleted(this, new MFP085RowChangeEvent(((MFP085Row)(e.Row)), e.Action));
                 }
             }
             
@@ -1442,14 +1442,14 @@ namespace Transfer_File {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.HFP085RowDeleting != null)) {
-                    this.HFP085RowDeleting(this, new HFP085RowChangeEvent(((HFP085Row)(e.Row)), e.Action));
+                if ((this.MFP085RowDeleting != null)) {
+                    this.MFP085RowDeleting(this, new MFP085RowChangeEvent(((MFP085Row)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void RemoveHFP085Row(HFP085Row row) {
+            public void RemoveMFP085Row(MFP085Row row) {
                 this.Rows.Remove(row);
             }
             
@@ -1476,7 +1476,7 @@ namespace Transfer_File {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "HFP085DataTable";
+                attribute2.FixedValue = "MFP085DataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -2151,15 +2151,15 @@ namespace Transfer_File {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class HFP085Row : global::System.Data.DataRow {
+        public partial class MFP085Row : global::System.Data.DataRow {
             
-            private HFP085DataTable tableHFP085;
+            private MFP085DataTable tableMFP085;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal HFP085Row(global::System.Data.DataRowBuilder rb) : 
+            internal MFP085Row(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableHFP085 = ((HFP085DataTable)(this.Table));
+                this.tableMFP085 = ((MFP085DataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2167,14 +2167,14 @@ namespace Transfer_File {
             public string CFM01 {
                 get {
                     try {
-                        return ((string)(this[this.tableHFP085.CFM01Column]));
+                        return ((string)(this[this.tableMFP085.CFM01Column]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("資料表 \'HFP085\' 中資料行 \'CFM01\' 的值是 DBNull。", e);
+                        throw new global::System.Data.StrongTypingException("資料表 \'MFP085\' 中資料行 \'CFM01\' 的值是 DBNull。", e);
                     }
                 }
                 set {
-                    this[this.tableHFP085.CFM01Column] = value;
+                    this[this.tableMFP085.CFM01Column] = value;
                 }
             }
             
@@ -2183,14 +2183,14 @@ namespace Transfer_File {
             public string CFM02 {
                 get {
                     try {
-                        return ((string)(this[this.tableHFP085.CFM02Column]));
+                        return ((string)(this[this.tableMFP085.CFM02Column]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("資料表 \'HFP085\' 中資料行 \'CFM02\' 的值是 DBNull。", e);
+                        throw new global::System.Data.StrongTypingException("資料表 \'MFP085\' 中資料行 \'CFM02\' 的值是 DBNull。", e);
                     }
                 }
                 set {
-                    this[this.tableHFP085.CFM02Column] = value;
+                    this[this.tableMFP085.CFM02Column] = value;
                 }
             }
             
@@ -2199,14 +2199,14 @@ namespace Transfer_File {
             public char CFM03 {
                 get {
                     try {
-                        return ((char)(this[this.tableHFP085.CFM03Column]));
+                        return ((char)(this[this.tableMFP085.CFM03Column]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("資料表 \'HFP085\' 中資料行 \'CFM03\' 的值是 DBNull。", e);
+                        throw new global::System.Data.StrongTypingException("資料表 \'MFP085\' 中資料行 \'CFM03\' 的值是 DBNull。", e);
                     }
                 }
                 set {
-                    this[this.tableHFP085.CFM03Column] = value;
+                    this[this.tableMFP085.CFM03Column] = value;
                 }
             }
             
@@ -2215,14 +2215,14 @@ namespace Transfer_File {
             public string CFM04 {
                 get {
                     try {
-                        return ((string)(this[this.tableHFP085.CFM04Column]));
+                        return ((string)(this[this.tableMFP085.CFM04Column]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("資料表 \'HFP085\' 中資料行 \'CFM04\' 的值是 DBNull。", e);
+                        throw new global::System.Data.StrongTypingException("資料表 \'MFP085\' 中資料行 \'CFM04\' 的值是 DBNull。", e);
                     }
                 }
                 set {
-                    this[this.tableHFP085.CFM04Column] = value;
+                    this[this.tableMFP085.CFM04Column] = value;
                 }
             }
             
@@ -2231,14 +2231,14 @@ namespace Transfer_File {
             public decimal CFM05 {
                 get {
                     try {
-                        return ((decimal)(this[this.tableHFP085.CFM05Column]));
+                        return ((decimal)(this[this.tableMFP085.CFM05Column]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("資料表 \'HFP085\' 中資料行 \'CFM05\' 的值是 DBNull。", e);
+                        throw new global::System.Data.StrongTypingException("資料表 \'MFP085\' 中資料行 \'CFM05\' 的值是 DBNull。", e);
                     }
                 }
                 set {
-                    this[this.tableHFP085.CFM05Column] = value;
+                    this[this.tableMFP085.CFM05Column] = value;
                 }
             }
             
@@ -2247,14 +2247,14 @@ namespace Transfer_File {
             public decimal CFM06 {
                 get {
                     try {
-                        return ((decimal)(this[this.tableHFP085.CFM06Column]));
+                        return ((decimal)(this[this.tableMFP085.CFM06Column]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("資料表 \'HFP085\' 中資料行 \'CFM06\' 的值是 DBNull。", e);
+                        throw new global::System.Data.StrongTypingException("資料表 \'MFP085\' 中資料行 \'CFM06\' 的值是 DBNull。", e);
                     }
                 }
                 set {
-                    this[this.tableHFP085.CFM06Column] = value;
+                    this[this.tableMFP085.CFM06Column] = value;
                 }
             }
             
@@ -2263,14 +2263,14 @@ namespace Transfer_File {
             public decimal CFM07 {
                 get {
                     try {
-                        return ((decimal)(this[this.tableHFP085.CFM07Column]));
+                        return ((decimal)(this[this.tableMFP085.CFM07Column]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("資料表 \'HFP085\' 中資料行 \'CFM07\' 的值是 DBNull。", e);
+                        throw new global::System.Data.StrongTypingException("資料表 \'MFP085\' 中資料行 \'CFM07\' 的值是 DBNull。", e);
                     }
                 }
                 set {
-                    this[this.tableHFP085.CFM07Column] = value;
+                    this[this.tableMFP085.CFM07Column] = value;
                 }
             }
             
@@ -2279,14 +2279,14 @@ namespace Transfer_File {
             public char CFM08 {
                 get {
                     try {
-                        return ((char)(this[this.tableHFP085.CFM08Column]));
+                        return ((char)(this[this.tableMFP085.CFM08Column]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("資料表 \'HFP085\' 中資料行 \'CFM08\' 的值是 DBNull。", e);
+                        throw new global::System.Data.StrongTypingException("資料表 \'MFP085\' 中資料行 \'CFM08\' 的值是 DBNull。", e);
                     }
                 }
                 set {
-                    this[this.tableHFP085.CFM08Column] = value;
+                    this[this.tableMFP085.CFM08Column] = value;
                 }
             }
             
@@ -2295,14 +2295,14 @@ namespace Transfer_File {
             public decimal CFM09 {
                 get {
                     try {
-                        return ((decimal)(this[this.tableHFP085.CFM09Column]));
+                        return ((decimal)(this[this.tableMFP085.CFM09Column]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("資料表 \'HFP085\' 中資料行 \'CFM09\' 的值是 DBNull。", e);
+                        throw new global::System.Data.StrongTypingException("資料表 \'MFP085\' 中資料行 \'CFM09\' 的值是 DBNull。", e);
                     }
                 }
                 set {
-                    this[this.tableHFP085.CFM09Column] = value;
+                    this[this.tableMFP085.CFM09Column] = value;
                 }
             }
             
@@ -2311,14 +2311,14 @@ namespace Transfer_File {
             public decimal CFM10 {
                 get {
                     try {
-                        return ((decimal)(this[this.tableHFP085.CFM10Column]));
+                        return ((decimal)(this[this.tableMFP085.CFM10Column]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("資料表 \'HFP085\' 中資料行 \'CFM10\' 的值是 DBNull。", e);
+                        throw new global::System.Data.StrongTypingException("資料表 \'MFP085\' 中資料行 \'CFM10\' 的值是 DBNull。", e);
                     }
                 }
                 set {
-                    this[this.tableHFP085.CFM10Column] = value;
+                    this[this.tableMFP085.CFM10Column] = value;
                 }
             }
             
@@ -2327,14 +2327,14 @@ namespace Transfer_File {
             public decimal CFM11 {
                 get {
                     try {
-                        return ((decimal)(this[this.tableHFP085.CFM11Column]));
+                        return ((decimal)(this[this.tableMFP085.CFM11Column]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("資料表 \'HFP085\' 中資料行 \'CFM11\' 的值是 DBNull。", e);
+                        throw new global::System.Data.StrongTypingException("資料表 \'MFP085\' 中資料行 \'CFM11\' 的值是 DBNull。", e);
                     }
                 }
                 set {
-                    this[this.tableHFP085.CFM11Column] = value;
+                    this[this.tableMFP085.CFM11Column] = value;
                 }
             }
             
@@ -2343,14 +2343,14 @@ namespace Transfer_File {
             public string CFM12 {
                 get {
                     try {
-                        return ((string)(this[this.tableHFP085.CFM12Column]));
+                        return ((string)(this[this.tableMFP085.CFM12Column]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("資料表 \'HFP085\' 中資料行 \'CFM12\' 的值是 DBNull。", e);
+                        throw new global::System.Data.StrongTypingException("資料表 \'MFP085\' 中資料行 \'CFM12\' 的值是 DBNull。", e);
                     }
                 }
                 set {
-                    this[this.tableHFP085.CFM12Column] = value;
+                    this[this.tableMFP085.CFM12Column] = value;
                 }
             }
             
@@ -2359,14 +2359,14 @@ namespace Transfer_File {
             public int CFM13 {
                 get {
                     try {
-                        return ((int)(this[this.tableHFP085.CFM13Column]));
+                        return ((int)(this[this.tableMFP085.CFM13Column]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("資料表 \'HFP085\' 中資料行 \'CFM13\' 的值是 DBNull。", e);
+                        throw new global::System.Data.StrongTypingException("資料表 \'MFP085\' 中資料行 \'CFM13\' 的值是 DBNull。", e);
                     }
                 }
                 set {
-                    this[this.tableHFP085.CFM13Column] = value;
+                    this[this.tableMFP085.CFM13Column] = value;
                 }
             }
             
@@ -2375,14 +2375,14 @@ namespace Transfer_File {
             public int CFM14 {
                 get {
                     try {
-                        return ((int)(this[this.tableHFP085.CFM14Column]));
+                        return ((int)(this[this.tableMFP085.CFM14Column]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("資料表 \'HFP085\' 中資料行 \'CFM14\' 的值是 DBNull。", e);
+                        throw new global::System.Data.StrongTypingException("資料表 \'MFP085\' 中資料行 \'CFM14\' 的值是 DBNull。", e);
                     }
                 }
                 set {
-                    this[this.tableHFP085.CFM14Column] = value;
+                    this[this.tableMFP085.CFM14Column] = value;
                 }
             }
             
@@ -2391,14 +2391,14 @@ namespace Transfer_File {
             public int CFM15 {
                 get {
                     try {
-                        return ((int)(this[this.tableHFP085.CFM15Column]));
+                        return ((int)(this[this.tableMFP085.CFM15Column]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("資料表 \'HFP085\' 中資料行 \'CFM15\' 的值是 DBNull。", e);
+                        throw new global::System.Data.StrongTypingException("資料表 \'MFP085\' 中資料行 \'CFM15\' 的值是 DBNull。", e);
                     }
                 }
                 set {
-                    this[this.tableHFP085.CFM15Column] = value;
+                    this[this.tableMFP085.CFM15Column] = value;
                 }
             }
             
@@ -2407,14 +2407,14 @@ namespace Transfer_File {
             public int CFM16 {
                 get {
                     try {
-                        return ((int)(this[this.tableHFP085.CFM16Column]));
+                        return ((int)(this[this.tableMFP085.CFM16Column]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("資料表 \'HFP085\' 中資料行 \'CFM16\' 的值是 DBNull。", e);
+                        throw new global::System.Data.StrongTypingException("資料表 \'MFP085\' 中資料行 \'CFM16\' 的值是 DBNull。", e);
                     }
                 }
                 set {
-                    this[this.tableHFP085.CFM16Column] = value;
+                    this[this.tableMFP085.CFM16Column] = value;
                 }
             }
             
@@ -2423,14 +2423,14 @@ namespace Transfer_File {
             public int CFM17 {
                 get {
                     try {
-                        return ((int)(this[this.tableHFP085.CFM17Column]));
+                        return ((int)(this[this.tableMFP085.CFM17Column]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("資料表 \'HFP085\' 中資料行 \'CFM17\' 的值是 DBNull。", e);
+                        throw new global::System.Data.StrongTypingException("資料表 \'MFP085\' 中資料行 \'CFM17\' 的值是 DBNull。", e);
                     }
                 }
                 set {
-                    this[this.tableHFP085.CFM17Column] = value;
+                    this[this.tableMFP085.CFM17Column] = value;
                 }
             }
             
@@ -2439,14 +2439,14 @@ namespace Transfer_File {
             public int CFM18 {
                 get {
                     try {
-                        return ((int)(this[this.tableHFP085.CFM18Column]));
+                        return ((int)(this[this.tableMFP085.CFM18Column]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("資料表 \'HFP085\' 中資料行 \'CFM18\' 的值是 DBNull。", e);
+                        throw new global::System.Data.StrongTypingException("資料表 \'MFP085\' 中資料行 \'CFM18\' 的值是 DBNull。", e);
                     }
                 }
                 set {
-                    this[this.tableHFP085.CFM18Column] = value;
+                    this[this.tableMFP085.CFM18Column] = value;
                 }
             }
             
@@ -2455,14 +2455,14 @@ namespace Transfer_File {
             public int CFM19 {
                 get {
                     try {
-                        return ((int)(this[this.tableHFP085.CFM19Column]));
+                        return ((int)(this[this.tableMFP085.CFM19Column]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("資料表 \'HFP085\' 中資料行 \'CFM19\' 的值是 DBNull。", e);
+                        throw new global::System.Data.StrongTypingException("資料表 \'MFP085\' 中資料行 \'CFM19\' 的值是 DBNull。", e);
                     }
                 }
                 set {
-                    this[this.tableHFP085.CFM19Column] = value;
+                    this[this.tableMFP085.CFM19Column] = value;
                 }
             }
             
@@ -2471,14 +2471,14 @@ namespace Transfer_File {
             public int CFM20 {
                 get {
                     try {
-                        return ((int)(this[this.tableHFP085.CFM20Column]));
+                        return ((int)(this[this.tableMFP085.CFM20Column]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("資料表 \'HFP085\' 中資料行 \'CFM20\' 的值是 DBNull。", e);
+                        throw new global::System.Data.StrongTypingException("資料表 \'MFP085\' 中資料行 \'CFM20\' 的值是 DBNull。", e);
                     }
                 }
                 set {
-                    this[this.tableHFP085.CFM20Column] = value;
+                    this[this.tableMFP085.CFM20Column] = value;
                 }
             }
             
@@ -2487,14 +2487,14 @@ namespace Transfer_File {
             public int CFM21 {
                 get {
                     try {
-                        return ((int)(this[this.tableHFP085.CFM21Column]));
+                        return ((int)(this[this.tableMFP085.CFM21Column]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("資料表 \'HFP085\' 中資料行 \'CFM21\' 的值是 DBNull。", e);
+                        throw new global::System.Data.StrongTypingException("資料表 \'MFP085\' 中資料行 \'CFM21\' 的值是 DBNull。", e);
                     }
                 }
                 set {
-                    this[this.tableHFP085.CFM21Column] = value;
+                    this[this.tableMFP085.CFM21Column] = value;
                 }
             }
             
@@ -2503,14 +2503,14 @@ namespace Transfer_File {
             public int CFM22 {
                 get {
                     try {
-                        return ((int)(this[this.tableHFP085.CFM22Column]));
+                        return ((int)(this[this.tableMFP085.CFM22Column]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("資料表 \'HFP085\' 中資料行 \'CFM22\' 的值是 DBNull。", e);
+                        throw new global::System.Data.StrongTypingException("資料表 \'MFP085\' 中資料行 \'CFM22\' 的值是 DBNull。", e);
                     }
                 }
                 set {
-                    this[this.tableHFP085.CFM22Column] = value;
+                    this[this.tableMFP085.CFM22Column] = value;
                 }
             }
             
@@ -2519,14 +2519,14 @@ namespace Transfer_File {
             public string CFM23 {
                 get {
                     try {
-                        return ((string)(this[this.tableHFP085.CFM23Column]));
+                        return ((string)(this[this.tableMFP085.CFM23Column]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("資料表 \'HFP085\' 中資料行 \'CFM23\' 的值是 DBNull。", e);
+                        throw new global::System.Data.StrongTypingException("資料表 \'MFP085\' 中資料行 \'CFM23\' 的值是 DBNull。", e);
                     }
                 }
                 set {
-                    this[this.tableHFP085.CFM23Column] = value;
+                    this[this.tableMFP085.CFM23Column] = value;
                 }
             }
             
@@ -2535,14 +2535,14 @@ namespace Transfer_File {
             public int CFM24 {
                 get {
                     try {
-                        return ((int)(this[this.tableHFP085.CFM24Column]));
+                        return ((int)(this[this.tableMFP085.CFM24Column]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("資料表 \'HFP085\' 中資料行 \'CFM24\' 的值是 DBNull。", e);
+                        throw new global::System.Data.StrongTypingException("資料表 \'MFP085\' 中資料行 \'CFM24\' 的值是 DBNull。", e);
                     }
                 }
                 set {
-                    this[this.tableHFP085.CFM24Column] = value;
+                    this[this.tableMFP085.CFM24Column] = value;
                 }
             }
             
@@ -2551,315 +2551,315 @@ namespace Transfer_File {
             public string CFM25 {
                 get {
                     try {
-                        return ((string)(this[this.tableHFP085.CFM25Column]));
+                        return ((string)(this[this.tableMFP085.CFM25Column]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("資料表 \'HFP085\' 中資料行 \'CFM25\' 的值是 DBNull。", e);
+                        throw new global::System.Data.StrongTypingException("資料表 \'MFP085\' 中資料行 \'CFM25\' 的值是 DBNull。", e);
                     }
                 }
                 set {
-                    this[this.tableHFP085.CFM25Column] = value;
+                    this[this.tableMFP085.CFM25Column] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsCFM01Null() {
-                return this.IsNull(this.tableHFP085.CFM01Column);
+                return this.IsNull(this.tableMFP085.CFM01Column);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetCFM01Null() {
-                this[this.tableHFP085.CFM01Column] = global::System.Convert.DBNull;
+                this[this.tableMFP085.CFM01Column] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsCFM02Null() {
-                return this.IsNull(this.tableHFP085.CFM02Column);
+                return this.IsNull(this.tableMFP085.CFM02Column);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetCFM02Null() {
-                this[this.tableHFP085.CFM02Column] = global::System.Convert.DBNull;
+                this[this.tableMFP085.CFM02Column] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsCFM03Null() {
-                return this.IsNull(this.tableHFP085.CFM03Column);
+                return this.IsNull(this.tableMFP085.CFM03Column);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetCFM03Null() {
-                this[this.tableHFP085.CFM03Column] = global::System.Convert.DBNull;
+                this[this.tableMFP085.CFM03Column] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsCFM04Null() {
-                return this.IsNull(this.tableHFP085.CFM04Column);
+                return this.IsNull(this.tableMFP085.CFM04Column);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetCFM04Null() {
-                this[this.tableHFP085.CFM04Column] = global::System.Convert.DBNull;
+                this[this.tableMFP085.CFM04Column] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsCFM05Null() {
-                return this.IsNull(this.tableHFP085.CFM05Column);
+                return this.IsNull(this.tableMFP085.CFM05Column);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetCFM05Null() {
-                this[this.tableHFP085.CFM05Column] = global::System.Convert.DBNull;
+                this[this.tableMFP085.CFM05Column] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsCFM06Null() {
-                return this.IsNull(this.tableHFP085.CFM06Column);
+                return this.IsNull(this.tableMFP085.CFM06Column);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetCFM06Null() {
-                this[this.tableHFP085.CFM06Column] = global::System.Convert.DBNull;
+                this[this.tableMFP085.CFM06Column] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsCFM07Null() {
-                return this.IsNull(this.tableHFP085.CFM07Column);
+                return this.IsNull(this.tableMFP085.CFM07Column);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetCFM07Null() {
-                this[this.tableHFP085.CFM07Column] = global::System.Convert.DBNull;
+                this[this.tableMFP085.CFM07Column] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsCFM08Null() {
-                return this.IsNull(this.tableHFP085.CFM08Column);
+                return this.IsNull(this.tableMFP085.CFM08Column);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetCFM08Null() {
-                this[this.tableHFP085.CFM08Column] = global::System.Convert.DBNull;
+                this[this.tableMFP085.CFM08Column] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsCFM09Null() {
-                return this.IsNull(this.tableHFP085.CFM09Column);
+                return this.IsNull(this.tableMFP085.CFM09Column);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetCFM09Null() {
-                this[this.tableHFP085.CFM09Column] = global::System.Convert.DBNull;
+                this[this.tableMFP085.CFM09Column] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsCFM10Null() {
-                return this.IsNull(this.tableHFP085.CFM10Column);
+                return this.IsNull(this.tableMFP085.CFM10Column);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetCFM10Null() {
-                this[this.tableHFP085.CFM10Column] = global::System.Convert.DBNull;
+                this[this.tableMFP085.CFM10Column] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsCFM11Null() {
-                return this.IsNull(this.tableHFP085.CFM11Column);
+                return this.IsNull(this.tableMFP085.CFM11Column);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetCFM11Null() {
-                this[this.tableHFP085.CFM11Column] = global::System.Convert.DBNull;
+                this[this.tableMFP085.CFM11Column] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsCFM12Null() {
-                return this.IsNull(this.tableHFP085.CFM12Column);
+                return this.IsNull(this.tableMFP085.CFM12Column);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetCFM12Null() {
-                this[this.tableHFP085.CFM12Column] = global::System.Convert.DBNull;
+                this[this.tableMFP085.CFM12Column] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsCFM13Null() {
-                return this.IsNull(this.tableHFP085.CFM13Column);
+                return this.IsNull(this.tableMFP085.CFM13Column);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetCFM13Null() {
-                this[this.tableHFP085.CFM13Column] = global::System.Convert.DBNull;
+                this[this.tableMFP085.CFM13Column] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsCFM14Null() {
-                return this.IsNull(this.tableHFP085.CFM14Column);
+                return this.IsNull(this.tableMFP085.CFM14Column);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetCFM14Null() {
-                this[this.tableHFP085.CFM14Column] = global::System.Convert.DBNull;
+                this[this.tableMFP085.CFM14Column] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsCFM15Null() {
-                return this.IsNull(this.tableHFP085.CFM15Column);
+                return this.IsNull(this.tableMFP085.CFM15Column);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetCFM15Null() {
-                this[this.tableHFP085.CFM15Column] = global::System.Convert.DBNull;
+                this[this.tableMFP085.CFM15Column] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsCFM16Null() {
-                return this.IsNull(this.tableHFP085.CFM16Column);
+                return this.IsNull(this.tableMFP085.CFM16Column);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetCFM16Null() {
-                this[this.tableHFP085.CFM16Column] = global::System.Convert.DBNull;
+                this[this.tableMFP085.CFM16Column] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsCFM17Null() {
-                return this.IsNull(this.tableHFP085.CFM17Column);
+                return this.IsNull(this.tableMFP085.CFM17Column);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetCFM17Null() {
-                this[this.tableHFP085.CFM17Column] = global::System.Convert.DBNull;
+                this[this.tableMFP085.CFM17Column] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsCFM18Null() {
-                return this.IsNull(this.tableHFP085.CFM18Column);
+                return this.IsNull(this.tableMFP085.CFM18Column);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetCFM18Null() {
-                this[this.tableHFP085.CFM18Column] = global::System.Convert.DBNull;
+                this[this.tableMFP085.CFM18Column] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsCFM19Null() {
-                return this.IsNull(this.tableHFP085.CFM19Column);
+                return this.IsNull(this.tableMFP085.CFM19Column);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetCFM19Null() {
-                this[this.tableHFP085.CFM19Column] = global::System.Convert.DBNull;
+                this[this.tableMFP085.CFM19Column] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsCFM20Null() {
-                return this.IsNull(this.tableHFP085.CFM20Column);
+                return this.IsNull(this.tableMFP085.CFM20Column);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetCFM20Null() {
-                this[this.tableHFP085.CFM20Column] = global::System.Convert.DBNull;
+                this[this.tableMFP085.CFM20Column] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsCFM21Null() {
-                return this.IsNull(this.tableHFP085.CFM21Column);
+                return this.IsNull(this.tableMFP085.CFM21Column);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetCFM21Null() {
-                this[this.tableHFP085.CFM21Column] = global::System.Convert.DBNull;
+                this[this.tableMFP085.CFM21Column] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsCFM22Null() {
-                return this.IsNull(this.tableHFP085.CFM22Column);
+                return this.IsNull(this.tableMFP085.CFM22Column);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetCFM22Null() {
-                this[this.tableHFP085.CFM22Column] = global::System.Convert.DBNull;
+                this[this.tableMFP085.CFM22Column] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsCFM23Null() {
-                return this.IsNull(this.tableHFP085.CFM23Column);
+                return this.IsNull(this.tableMFP085.CFM23Column);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetCFM23Null() {
-                this[this.tableHFP085.CFM23Column] = global::System.Convert.DBNull;
+                this[this.tableMFP085.CFM23Column] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsCFM24Null() {
-                return this.IsNull(this.tableHFP085.CFM24Column);
+                return this.IsNull(this.tableMFP085.CFM24Column);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetCFM24Null() {
-                this[this.tableHFP085.CFM24Column] = global::System.Convert.DBNull;
+                this[this.tableMFP085.CFM24Column] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsCFM25Null() {
-                return this.IsNull(this.tableHFP085.CFM25Column);
+                return this.IsNull(this.tableMFP085.CFM25Column);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetCFM25Null() {
-                this[this.tableHFP085.CFM25Column] = global::System.Convert.DBNull;
+                this[this.tableMFP085.CFM25Column] = global::System.Convert.DBNull;
             }
         }
         
@@ -2901,22 +2901,22 @@ namespace Transfer_File {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public class HFP085RowChangeEvent : global::System.EventArgs {
+        public class MFP085RowChangeEvent : global::System.EventArgs {
             
-            private HFP085Row eventRow;
+            private MFP085Row eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public HFP085RowChangeEvent(HFP085Row row, global::System.Data.DataRowAction action) {
+            public MFP085RowChangeEvent(MFP085Row row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public HFP085Row Row {
+            public MFP085Row Row {
                 get {
                     return this.eventRow;
                 }

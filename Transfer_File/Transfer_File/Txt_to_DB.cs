@@ -16,8 +16,8 @@ namespace Transfer_File
         Move_File move_File;
         DirectoryInfo directoryInfo;
         StringBuilder stringHistory;
-        StringBuilder stringHistoryTemp;
         ESMP.T30DataTable t30_xsd_rows;
+        MFP085_to_DB mfp085_to_DB;
 
         string path = ConfigurationManager.AppSettings["path"];
         string destinationPath = ConfigurationManager.AppSettings["destinationPath"];
@@ -45,21 +45,37 @@ namespace Transfer_File
 
         public virtual StringBuilder TxtToMysql(MySqlConnection mySqlConnection, ref bool checkFile)
         {
-            stringHistoryTemp = new StringBuilder();
+            mfp085_to_DB = new MFP085_to_DB();
+            StringBuilder stringHistoryTemp = new StringBuilder(); // 不能設成全域變數否則在同個程式中new會洗掉之前MFP085的訊息
 
             directoryInfo = new DirectoryInfo(path);
             try
             {
                 foreach (FileInfo fileInfo in directoryInfo.GetFiles("*.TXT"))
                 {
+                    MessageBox.Show(fileInfo.ToString());
                     checkFile = true;
                     if (fileInfo.ToString().Contains("T30"))
                     {
-                        this.InputDataToMysql(mySqlConnection, fileInfo.ToString());
+                        try
+                        {
+                            stringHistoryTemp.AppendLine(this.InputDataToMysql(mySqlConnection, fileInfo.ToString()).ToString());
+                        }
+                        catch (Exception e)
+                        {
+                            MessageBox.Show(e.Message);
+                        }
                     }
-                    else if (fileInfo.ToString().Contains("HFP085"))
+                    else if (fileInfo.ToString().Contains("MFP085"))
                     {
-
+                        try
+                        {
+                            stringHistoryTemp.AppendLine(mfp085_to_DB.InputDataToMysql(mySqlConnection, fileInfo.ToString()).ToString());
+                        }
+                        catch(Exception e)
+                        {
+                            MessageBox.Show( e.Message);
+                        }
                     }
                 }
                 stringHistory = stringHistoryTemp; // 全部掃完再輸出 也可以解決輸出一半的問題
@@ -80,7 +96,7 @@ namespace Transfer_File
             t30_xsd_rows = new ESMP.T30DataTable(); // xsd 裝載
             t30_data_get_set = new T30_Data();
             move_File = new Move_File();
-            stringHistoryTemp = new StringBuilder();
+            StringBuilder stringHistoryTemp = new StringBuilder();
 
             if (ReadFileToString(fileString, ref fileStringList, false))
             {
