@@ -13,11 +13,11 @@ namespace Transfer_File
     internal class Txt_to_DB
     {
         T30_Data t30_data_get_set;
-        Move_File move_File;
+        Move_File move_file;
         DirectoryInfo directoryInfo;
         StringBuilder stringHistory;
         ESMP.T30DataTable t30_xsd_rows;
-        MFP085_to_DB mfp085_to_DB;
+        MFP085_to_DB mfp085_to_db;
 
         string path = ConfigurationManager.AppSettings["path"];
         string destinationPath = ConfigurationManager.AppSettings["destinationPath"];
@@ -45,7 +45,7 @@ namespace Transfer_File
 
         public virtual StringBuilder TxtToMysql(MySqlConnection mySqlConnection, ref bool checkFile)
         {
-            mfp085_to_DB = new MFP085_to_DB();
+            mfp085_to_db = new MFP085_to_DB();
             StringBuilder stringHistoryTemp = new StringBuilder(); // 不能設成全域變數否則在同個程式中new會洗掉之前MFP085的訊息
 
             directoryInfo = new DirectoryInfo(path);
@@ -70,7 +70,7 @@ namespace Transfer_File
                     {
                         try
                         {
-                            stringHistoryTemp.AppendLine(mfp085_to_DB.InputDataToMysql(mySqlConnection, fileInfo.ToString()).ToString());
+                            stringHistoryTemp.AppendLine(mfp085_to_db.InputDataToMysql(mySqlConnection, fileInfo.ToString()).ToString());
                         }
                         catch(Exception e)
                         {
@@ -95,7 +95,7 @@ namespace Transfer_File
 
             t30_xsd_rows = new ESMP.T30DataTable(); // xsd 裝載
             t30_data_get_set = new T30_Data();
-            move_File = new Move_File();
+            move_file = new Move_File();
             StringBuilder stringHistoryTemp = new StringBuilder();
 
             if (ReadFileToString(fileString, ref fileStringList, false))
@@ -190,7 +190,7 @@ namespace Transfer_File
                         }
                     }
                     stringHistoryTemp.AppendLine(String.Format("{0} 存入DB完畢 共存入{1}筆\r", fileString, count));
-                    stringHistoryTemp.AppendLine(move_File.MoveFile(fileString, destinationPath)); // 轉移處理完的檔案 並讓stringHistoryTemp暫存轉移的log
+                    stringHistoryTemp.AppendLine(move_file.MoveFile(fileString, destinationPath)); // 轉移處理完的檔案 並讓stringHistoryTemp暫存轉移的log
                     
                     string xsdFile = @"D:\Desktop\ALPED\Systex\Git_Repository\CSharp_Tasks\deryckgod\CSharp_Tasks\Transfer_File\Transfer_File\ESMP.xsd";
                     t30_xsd_rows.WriteXmlSchema(xsdFile);

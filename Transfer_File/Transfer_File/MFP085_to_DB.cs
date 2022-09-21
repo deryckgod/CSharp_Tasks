@@ -13,7 +13,6 @@ namespace Transfer_File
         ESMP.MFP085DataTable mFP085Rows;
         MFP085_Data mfp085_data_get_set;
         Move_File move_File;
-        StringBuilder stringHistoryTemp;
 
         string path = ConfigurationManager.AppSettings["path"];
         string destinationPath = ConfigurationManager.AppSettings["destinationPath"];
@@ -25,7 +24,7 @@ namespace Transfer_File
             mFP085Rows = new ESMP.MFP085DataTable(); // xsd 裝載
             mfp085_data_get_set = new MFP085_Data();
             move_File = new Move_File();
-            stringHistoryTemp = new StringBuilder();
+            StringBuilder stringHistoryTemp = new StringBuilder();
 
             if (ReadFileToString(fileString, ref fileStringList, false))
             {
@@ -126,12 +125,12 @@ namespace Transfer_File
                     }
                 }
                 stringHistoryTemp.AppendLine(String.Format("{0} 存入DB完畢 共存入{1}筆\r", fileString, count));
-                //stringHistoryTemp.AppendLine(move_File.MoveFile(fileString, destinationPath)); // 轉移處理完的檔案 並讓stringHistoryTemp暫存轉移的log
+                stringHistoryTemp.AppendLine(move_File.MoveFile(fileString, destinationPath)); // 轉移處理完的檔案 並讓stringHistoryTemp暫存轉移的log
 
-                //string xsdFile = @"D:\Desktop\ALPED\Systex\Git_Repository\CSharp_Tasks\deryckgod\CSharp_Tasks\Transfer_File\Transfer_File\ESMP.xsd";
-                //mFP085Rows.WriteXmlSchema(xsdFile);
-                //string xmlFile = @"D:\Desktop\ALPED\Systex\Git_Repository\CSharp_Tasks\deryckgod\CSharp_Tasks\Transfer_File\Transfer_File\ESMP.xml";
-                //mFP085Rows.WriteXml(xmlFile);
+                string xsdFile = @"D:\Desktop\ALPED\Systex\Git_Repository\CSharp_Tasks\deryckgod\CSharp_Tasks\Transfer_File\Transfer_File\ESMP.xsd";
+                mFP085Rows.WriteXmlSchema(xsdFile);
+                string xmlFile = @"D:\Desktop\ALPED\Systex\Git_Repository\CSharp_Tasks\deryckgod\CSharp_Tasks\Transfer_File\Transfer_File\ESMP.xml";
+                mFP085Rows.WriteXml(xmlFile);
                 return stringHistoryTemp;
             }
             else
