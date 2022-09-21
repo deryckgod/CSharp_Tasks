@@ -11,27 +11,23 @@ namespace Transfer_File
 {
     class MFP085_to_DB : Txt_to_DB
     {
-        ESMP.MFP085DataTable mFP085Rows;
-        MFP085_Data mfp085_data_get_set;
-        Move_File move_file;
-
-        string path = ConfigurationManager.AppSettings["path"];
         string destinationPath = ConfigurationManager.AppSettings["destinationPath"];
+
         public override StringBuilder InputDataToMysql(MySqlConnection mySqlConnection, string fileString)
         {
             List<string> fileStringList = new List<string>();
-            byte[] currentByteString = new byte[154]; // 存取當前100個byte資料
+            byte[] currentByteString = new byte[154];
 
-            mFP085Rows = new ESMP.MFP085DataTable(); // xsd 裝載
-            mfp085_data_get_set = new MFP085_Data();
-            move_file = new Move_File();
+            ESMP.MFP085DataTable mFP085Rows = new ESMP.MFP085DataTable(); // xsd 裝載
+            MFP085_Data mfp085_data_get_set = new MFP085_Data();
+            Move_File move_file = new Move_File();
             StringBuilder stringHistoryTemp = new StringBuilder();
 
             if (ReadFileToString(fileString, ref fileStringList, false))
             {
-                // 在文字框顯示資料
-                stringHistoryTemp.AppendLine(String.Format("收到檔案: {0} \r", fileString));
                 int count = 0;
+                stringHistoryTemp.AppendLine(String.Format("收到檔案: {0} \r", fileString));
+
                 foreach (string mainString in fileStringList)
                 {
                     // 宣告字元陣列做處理
@@ -75,7 +71,7 @@ namespace Transfer_File
                             mfp085_data_get_set.Cfm25 = Encoding.GetEncoding(950).GetString(currentByteString, 151, 2);
                             //stringHistoryTemp.AppendLine(String.Format("第{0}筆解析完畢\r", count + 1));
                             #endregion
-                            mySqlCommand.Parameters.Clear(); // 每次插入都先清除引數
+                            mySqlCommand.Parameters.Clear(); 
 
                             #region 添加參數
                             try
@@ -126,20 +122,20 @@ namespace Transfer_File
                     }
                 }
                 stringHistoryTemp.AppendLine(String.Format("{0} 存入DB完畢 共存入{1}筆\r", fileString, count));
-                stringHistoryTemp.AppendLine(move_file.MoveFile(fileString, destinationPath)); // 轉移處理完的檔案 並讓stringHistoryTemp暫存轉移的log
-
-                // 使用xsd會讓 ESMP.xsd的 MFP085 data table消失
-                //try
-                //{
-                    //string xsdFile = @"D:\Desktop\ALPED\Systex\Git_Repository\CSharp_Tasks\deryckgod\CSharp_Tasks\Transfer_File\Transfer_File\ESMP.xsd";
-                    //mFP085Rows.WriteXmlSchema(xsdFile);
-                    //string xmlFile = @"D:\Desktop\ALPED\Systex\Git_Repository\CSharp_Tasks\deryckgod\CSharp_Tasks\Transfer_File\Transfer_File\ESMP.xml";
-                    //mFP085Rows.WriteXml(xmlFile);
-                //}
-                //catch(Exception e)
-                //{
-                //    MessageBox.Show(e.Message);
-                //}
+                stringHistoryTemp.AppendLine(move_file.MoveFile(fileString, destinationPath)); 
+                /** 使用xsd會讓 ESMP.xsd的 MFP085 data table消失
+                try
+                {
+                    string xsdFile = @"D:\Desktop\ALPED\Systex\Git_Repository\CSharp_Tasks\deryckgod\CSharp_Tasks\Transfer_File\Transfer_File\ESMP.xsd";
+                    mFP085Rows.WriteXmlSchema(xsdFile);
+                    string xmlFile = @"D:\Desktop\ALPED\Systex\Git_Repository\CSharp_Tasks\deryckgod\CSharp_Tasks\Transfer_File\Transfer_File\ESMP.xml";
+                    mFP085Rows.WriteXml(xmlFile);
+                }
+                catch(Exception e)
+                {
+                    MessageBox.Show(e.Message);
+                }
+                **/
                 return stringHistoryTemp;
             }
             else
