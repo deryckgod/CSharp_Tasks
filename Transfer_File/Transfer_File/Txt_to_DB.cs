@@ -198,20 +198,6 @@ namespace Transfer_File
                 }
                 stringHistoryTemp.AppendLine(String.Format("{0} 存入DB完畢 共存入{1}筆\r", fileString, count));
                 stringHistoryTemp.AppendLine(move_file.MoveFile(fileString, destinationPath)); 
-
-                /** 暫時用不到xsd輸出
-                try
-                {
-                    string xsdFile = @"D:\Desktop\ALPED\Systex\Git_Repository\CSharp_Tasks\deryckgod\CSharp_Tasks\Transfer_File\Transfer_File\ESMP.xsd";
-                    mFP085Rows.WriteXmlSchema(xsdFile);
-                    string xmlFile = @"D:\Desktop\ALPED\Systex\Git_Repository\CSharp_Tasks\deryckgod\CSharp_Tasks\Transfer_File\Transfer_File\ESMP.xml";
-                    mFP085Rows.WriteXml(xmlFile);
-                }
-                catch (Exception e)
-                {
-                    MessageBox.Show(e.Message);
-                }
-                **/
                 return stringHistoryTemp;
             }
             else
