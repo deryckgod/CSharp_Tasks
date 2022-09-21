@@ -6,11 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Transfer_File
+namespace Transfer_File.DataTableFolder
 {
     internal class T30_Data
     {
-        
+
         #region 檔案參數
         //  避免放在迴圈中一直宣告 浪費資源
         string stock_No = "";

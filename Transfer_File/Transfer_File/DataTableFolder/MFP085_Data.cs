@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Transfer_File
+namespace Transfer_File.DataTableFolder
 {
     internal class MFP085_Data
     {

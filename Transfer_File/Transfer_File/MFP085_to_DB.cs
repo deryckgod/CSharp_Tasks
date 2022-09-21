@@ -5,6 +5,7 @@ using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Transfer_File.DataTableFolder;
 
 namespace Transfer_File
 {
@@ -12,7 +13,7 @@ namespace Transfer_File
     {
         ESMP.MFP085DataTable mFP085Rows;
         MFP085_Data mfp085_data_get_set;
-        Move_File move_File;
+        Move_File move_file;
 
         string path = ConfigurationManager.AppSettings["path"];
         string destinationPath = ConfigurationManager.AppSettings["destinationPath"];
@@ -23,7 +24,7 @@ namespace Transfer_File
 
             mFP085Rows = new ESMP.MFP085DataTable(); // xsd 裝載
             mfp085_data_get_set = new MFP085_Data();
-            move_File = new Move_File();
+            move_file = new Move_File();
             StringBuilder stringHistoryTemp = new StringBuilder();
 
             if (ReadFileToString(fileString, ref fileStringList, false))
@@ -33,19 +34,20 @@ namespace Transfer_File
                 int count = 0;
                 foreach (string mainString in fileStringList)
                 {
+                    // 宣告字元陣列做處理
                     byte[] lineString = Encoding.GetEncoding(950).GetBytes(mainString);
 
-                    
                     // 插入資料到指定資料表
                     using (MySqlCommand mySqlCommand = mySqlConnection.CreateCommand())
                     {
                         mySqlCommand.CommandText = "insert into t30.hfp085  (CFM01,CFM02,CFM03,CFM04,CFM05,CFM06,CFM07,CFM08,CFM09,CFM10,CFM11,CFM12,CFM13,CFM14,CFM15,CFM16,CFM17,CFM18,CFM19,CFM20,CFM21,CFM22,CFM23,CFM24,CFM25) values (@cfm01,@cfm02,@cfm03,@cfm04,@cfm05,@cfm06,@cfm07,@cfm08,@cfm09,@cfm10,@cfm11,@cfm12,@cfm13,@cfm14,@cfm15,@cfm16,@cfm17,@cfm18,@cfm19,@cfm20,@cfm21,@cfm22,@cfm23,@cfm24,@cfm25)";
 
-                        // 每個資料都是100位元，所以以100為底跳著讀
+                        // 每個資料都是153位元，所以以153為底跳著讀
                         for (int totalLength = 0; totalLength < lineString.Length; totalLength += 153)
                         {
                             Array.Copy(lineString, totalLength, currentByteString, 0, 153);
 
+                            #region 變數指定
                             mfp085_data_get_set.Cfm01 = Encoding.GetEncoding(950).GetString(currentByteString, 0, 8);
                             mfp085_data_get_set.Cfm02 = Encoding.GetEncoding(950).GetString(currentByteString, 8, 6);
                             mfp085_data_get_set.Cfm03 = Convert.ToChar(Encoding.GetEncoding(950).GetString(currentByteString, 14, 1));
@@ -58,11 +60,7 @@ namespace Transfer_File
                             mfp085_data_get_set.Cfm10 = Convert.ToDecimal(Encoding.GetEncoding(950).GetString(currentByteString, 45, 4));
                             mfp085_data_get_set.Cfm11 = (decimal)Convert.ToDecimal(Encoding.GetEncoding(950).GetString(currentByteString, 49, 3))/100;
                             mfp085_data_get_set.Cfm12 = Encoding.GetEncoding(950).GetString(currentByteString, 52, 1);
-
-                            // STOCK_NAME
                             mfp085_data_get_set.Cfm13 = Convert.ToInt32(Encoding.GetEncoding(950).GetString(currentByteString, 53, 8));
-
-                            // MARK_W_DETAILS
                             mfp085_data_get_set.Cfm14 = Convert.ToInt32(Encoding.GetEncoding(950).GetString(currentByteString, 61, 8));
                             mfp085_data_get_set.Cfm15 = Convert.ToInt32(Encoding.GetEncoding(950).GetString(currentByteString, 69, 8));
                             mfp085_data_get_set.Cfm16 = Convert.ToInt32(Encoding.GetEncoding(950).GetString(currentByteString, 77, 8));
@@ -76,8 +74,10 @@ namespace Transfer_File
                             mfp085_data_get_set.Cfm24 = Convert.ToInt32(Encoding.GetEncoding(950).GetString(currentByteString, 143, 8));
                             mfp085_data_get_set.Cfm25 = Encoding.GetEncoding(950).GetString(currentByteString, 151, 2);
                             //stringHistoryTemp.AppendLine(String.Format("第{0}筆解析完畢\r", count + 1));
-
+                            #endregion
                             mySqlCommand.Parameters.Clear(); // 每次插入都先清除引數
+
+                            #region 添加參數
                             try
                             {
                                 mySqlCommand.Parameters.Add(new MySqlParameter("cfm01", mfp085_data_get_set.Cfm01));
@@ -116,6 +116,7 @@ namespace Transfer_File
                             {
                                 MessageBox.Show(e.Message);
                             }
+                            #endregion
 
                             if (mySqlCommand.ExecuteNonQuery() > 0)
                             {
@@ -125,12 +126,13 @@ namespace Transfer_File
                     }
                 }
                 stringHistoryTemp.AppendLine(String.Format("{0} 存入DB完畢 共存入{1}筆\r", fileString, count));
-                stringHistoryTemp.AppendLine(move_File.MoveFile(fileString, destinationPath)); // 轉移處理完的檔案 並讓stringHistoryTemp暫存轉移的log
+                stringHistoryTemp.AppendLine(move_file.MoveFile(fileString, destinationPath)); // 轉移處理完的檔案 並讓stringHistoryTemp暫存轉移的log
 
-                string xsdFile = @"D:\Desktop\ALPED\Systex\Git_Repository\CSharp_Tasks\deryckgod\CSharp_Tasks\Transfer_File\Transfer_File\ESMP.xsd";
-                mFP085Rows.WriteXmlSchema(xsdFile);
-                string xmlFile = @"D:\Desktop\ALPED\Systex\Git_Repository\CSharp_Tasks\deryckgod\CSharp_Tasks\Transfer_File\Transfer_File\ESMP.xml";
-                mFP085Rows.WriteXml(xmlFile);
+                // 使用xsd會讓 ESMP.xsd的 MFP085 data table消失
+                //string xsdFile = @"D:\Desktop\ALPED\Systex\Git_Repository\CSharp_Tasks\deryckgod\CSharp_Tasks\Transfer_File\Transfer_File\ESMP.xsd";
+                //mFP085Rows.WriteXmlSchema(xsdFile);
+                //string xmlFile = @"D:\Desktop\ALPED\Systex\Git_Repository\CSharp_Tasks\deryckgod\CSharp_Tasks\Transfer_File\Transfer_File\ESMP.xml";
+                //mFP085Rows.WriteXml(xmlFile);
                 return stringHistoryTemp;
             }
             else

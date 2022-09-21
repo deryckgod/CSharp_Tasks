@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Transfer_File.DataTableFolder;
 
 namespace Transfer_File
 {
@@ -43,7 +44,7 @@ namespace Transfer_File
             return false;
         }
 
-        public virtual StringBuilder TxtToMysql(MySqlConnection mySqlConnection, ref bool checkFile)
+        public virtual StringBuilder TxtToMysql(MySqlConnection mySqlConnection, ref bool checkFile, ref bool checkOnCreated)
         {
             mfp085_to_db = new MFP085_to_DB();
             StringBuilder stringHistoryTemp = new StringBuilder(); // 不能設成全域變數否則在同個程式中new會洗掉之前MFP085的訊息
@@ -54,26 +55,30 @@ namespace Transfer_File
                 foreach (FileInfo fileInfo in directoryInfo.GetFiles("*.TXT"))
                 {
                     checkFile = true;
-                    if (fileInfo.ToString().Contains("T30"))
+                    // 避免create時 按btnConnect報錯
+                    if (!checkOnCreated)
                     {
-                        try
+                        if (fileInfo.ToString().Contains("T30"))
                         {
-                            stringHistoryTemp.AppendLine(this.InputDataToMysql(mySqlConnection, fileInfo.ToString()).ToString());
+                            try
+                            {
+                                stringHistoryTemp.AppendLine(this.InputDataToMysql(mySqlConnection, fileInfo.ToString()).ToString());
+                            }
+                            catch (Exception e)
+                            {
+                                MessageBox.Show(e.Message);
+                            }
                         }
-                        catch (Exception e)
+                        else if (fileInfo.ToString().Contains("MFP085"))
                         {
-                            MessageBox.Show(e.Message);
-                        }
-                    }
-                    else if (fileInfo.ToString().Contains("MFP085"))
-                    {
-                        try
-                        {
-                            stringHistoryTemp.AppendLine(mfp085_to_db.InputDataToMysql(mySqlConnection, fileInfo.ToString()).ToString());
-                        }
-                        catch(Exception e)
-                        {
-                            MessageBox.Show( e.Message);
+                            try
+                            {
+                                stringHistoryTemp.AppendLine(mfp085_to_db.InputDataToMysql(mySqlConnection, fileInfo.ToString()).ToString());
+                            }
+                            catch(Exception e)
+                            {
+                                MessageBox.Show( e.Message);
+                            }
                         }
                     }
                 }
@@ -116,7 +121,7 @@ namespace Transfer_File
                         for (int totalLength = 0; totalLength < lineString.Length; totalLength += 100)
                         {
                             Array.Copy(lineString, totalLength, currentByteString, 0, 100);
-
+                            #region 變數指定
                             t30_data_get_set.Stock_No = Encoding.GetEncoding(950).GetString(currentByteString, 0, 6);
                             t30_data_get_set.Bull_Price = (decimal)(Convert.ToDecimal(Encoding.GetEncoding(950).GetString(currentByteString, 6, 9)) / 10000);
                             t30_data_get_set.Ldc_Price = (decimal)(Convert.ToDecimal(Encoding.GetEncoding(950).GetString(currentByteString, 15, 9)) / 10000);
@@ -145,8 +150,10 @@ namespace Transfer_File
                             t30_data_get_set.Filler = Encoding.GetEncoding(950).GetString(currentByteString, 88, 12);
 
                             //stringHistoryTemp.AppendLine(String.Format("第{0}筆解析完畢\r", count + 1));
-
+                            #endregion
                             mySqlCommand.Parameters.Clear(); // 每次插入都先清除引數
+
+                            #region 添加參數
                             try
                             {
                                 mySqlCommand.Parameters.Add(new MySqlParameter("STOCK_NO", t30_data_get_set.Stock_No));
@@ -181,6 +188,7 @@ namespace Transfer_File
                             {
                                 MessageBox.Show(e.Message);
                             }
+                            #endregion
 
                             if (mySqlCommand.ExecuteNonQuery() > 0)
                             {
@@ -190,11 +198,11 @@ namespace Transfer_File
                     }
                     stringHistoryTemp.AppendLine(String.Format("{0} 存入DB完畢 共存入{1}筆\r", fileString, count));
                     stringHistoryTemp.AppendLine(move_file.MoveFile(fileString, destinationPath)); // 轉移處理完的檔案 並讓stringHistoryTemp暫存轉移的log
-                    
-                    string xsdFile = @"D:\Desktop\ALPED\Systex\Git_Repository\CSharp_Tasks\deryckgod\CSharp_Tasks\Transfer_File\Transfer_File\ESMP.xsd";
-                    t30_xsd_rows.WriteXmlSchema(xsdFile);
-                    string xmlFile = @"D:\Desktop\ALPED\Systex\Git_Repository\CSharp_Tasks\deryckgod\CSharp_Tasks\Transfer_File\Transfer_File\ESMP.xml";
-                    t30_xsd_rows.WriteXml(xmlFile);
+                    // 暫時用不到
+                    //string xsdFile = @"D:\Desktop\ALPED\Systex\Git_Repository\CSharp_Tasks\deryckgod\CSharp_Tasks\Transfer_File\Transfer_File\ESMP.xsd";
+                    //t30_xsd_rows.WriteXmlSchema(xsdFile);
+                    //string xmlFile = @"D:\Desktop\ALPED\Systex\Git_Repository\CSharp_Tasks\deryckgod\CSharp_Tasks\Transfer_File\Transfer_File\ESMP.xml";
+                    //t30_xsd_rows.WriteXml(xmlFile);
                 }
                 return stringHistoryTemp;
             }

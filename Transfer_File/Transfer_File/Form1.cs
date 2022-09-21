@@ -16,6 +16,7 @@ namespace Transfer_File
         StringBuilder stringHistory;
         StringBuilder stringHistoryTemp;
         bool checkFile = false;
+        bool checkOnCreated = false;
 
         Search_from_Mysql search_From_Mysql;
         Txt_to_DB txt_To_DB;
@@ -57,7 +58,7 @@ namespace Transfer_File
                 using (mySqlConnection = Connect())
                 {
                     txt_To_DB = new Txt_to_DB();
-                    stringHistory = txt_To_DB.TxtToMysql(mySqlConnection, ref checkFile);
+                    stringHistory = txt_To_DB.TxtToMysql(mySqlConnection, ref checkFile, ref checkOnCreated);
                 }
             }
             catch (Exception ex)
@@ -120,6 +121,7 @@ namespace Transfer_File
                 {
                     try
                     {
+                        checkOnCreated = true;
                         stringHistoryTemp = new StringBuilder(); // 放在checkFile中是避免當前檔案處理中途有其他檔案轉入造成歷史資訊中斷
                         stringHistoryTemp.AppendLine("新建檔案於:" + directoryInfo.FullName.Replace(directoryInfo.Name, ""));
                         stringHistoryTemp.AppendLine("新建檔案名稱:" + directoryInfo.Name);
@@ -145,6 +147,7 @@ namespace Transfer_File
                     {
                         MessageBox.Show("新增檔案例外 : "+e.Message);
                     }
+                    checkOnCreated = false;
                 }
             }
         }
