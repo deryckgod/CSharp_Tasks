@@ -26,13 +26,14 @@ namespace Transfer_File
                 // 解決.NET Core簡化編碼問題， Big5錯誤訊息消失
                 Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
 
-                using (StreamReader streamReader = new StreamReader(fileName, Encoding.GetEncoding("big5")))
+                try
                 {
-                    string line = "";
-                    while ((line = streamReader.ReadLine()) != null)
-                    {
-                        fileStringList.Add(line);
-                    }
+                    // StreamReader改用LINQ讀取
+                    fileStringList = File.ReadLines(fileName, Encoding.GetEncoding("big5")).ToList();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
                 }
                 return true;
             }
