@@ -18,10 +18,10 @@ namespace Transfer_File
             List<string> fileStringList = new List<string>();
             byte[] currentByteString = new byte[154];
 
-            ESMP.MFP085DataTable mFP085Rows = new ESMP.MFP085DataTable(); // xsd 裝載
             MFP085 mfp085_dto = new MFP085();
             Move_File move_file = new Move_File();
             StringBuilder stringHistoryTemp = new StringBuilder();
+            ESMP.MFP085DataTable mFP085Rows = new ESMP.MFP085DataTable(); // xsd 裝載
 
             if (ReadFileToString(fileString, ref fileStringList, false))
             {

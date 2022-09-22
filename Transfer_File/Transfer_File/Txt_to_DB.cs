@@ -93,10 +93,10 @@ namespace Transfer_File
             List<string> fileStringList = new List<string>();
             byte[] currentByteString = new byte[101]; // 存取當前100個byte資料
 
-            ESMP.T30DataTable t30_xsd_rows = new ESMP.T30DataTable(); // xsd 裝載
             T30 t30_dto = new T30();
             Move_File move_file = new Move_File();
             StringBuilder stringHistoryTemp = new StringBuilder();
+            ESMP.T30DataTable t30_xsd_rows = new ESMP.T30DataTable(); // xsd 裝載
 
             if (ReadFileToString(fileString, ref fileStringList, false))
             {
