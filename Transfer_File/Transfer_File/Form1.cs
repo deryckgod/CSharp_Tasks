@@ -138,7 +138,6 @@ namespace Transfer_File
                             {
                                 stringHistoryTemp.AppendLine(mfp085_to_db.InputDataToMysql(mySqlConnection, directoryInfo.FullName.ToString()).ToString());
                             }
-                            //stringHistoryTemp.AppendLine(txt_To_DB.InputDataToMysql(mySqlConnection, directoryInfo.FullName.ToString()).ToString()); // 進行解析
                         }
                         stringHistory = stringHistoryTemp; // 從原本的inputDataToMysql輸出移至created下面輸出 避免跟直接txtConditional.Text輸出衝突
                         break;
