@@ -16,7 +16,6 @@ namespace Transfer_File.File_to_DB
         StringBuilder stringHistory;
 
         string path = ConfigurationManager.AppSettings["path"];
-        string destinationPath = ConfigurationManager.AppSettings["destinationPath"];
 
         public bool ReadFileToString(string fileName, ref List<string> fileStringList, bool noSpace = false)
         {
@@ -49,12 +48,13 @@ namespace Transfer_File.File_to_DB
             DirectoryInfo directoryInfo = new DirectoryInfo(path);
             try
             {
-                foreach (FileInfo fileInfo in directoryInfo.GetFiles("*.TXT"))
+                if (!checkOnCreated)
                 {
-                    checkFile = true;
-                    // 避免有檔案create時 按btnConnect有衝突報錯
-                    if (!checkOnCreated)
+                    foreach (FileInfo fileInfo in directoryInfo.GetFiles("*.TXT"))
                     {
+                        checkFile = true;
+                        // 避免有檔案create時 按btnConnect有衝突報錯
+                    
                         if (fileInfo.ToString().Contains("T30"))
                         {
                             try

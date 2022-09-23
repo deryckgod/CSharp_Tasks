@@ -20,7 +20,8 @@ namespace Transfer_File.File_to_DB
             Move_File move_file = new Move_File();
             StringBuilder stringHistoryTemp = new StringBuilder();
             ESMP.T30DataTable t30_xsd_rows = new ESMP.T30DataTable(); // xsd 裝載
-
+            var t30Row = t30_xsd_rows.NewT30Row();
+            
             if (ReadFileToString(fileString, ref fileStringList, false))
             {
                 // 在文字框顯示資料
@@ -39,7 +40,7 @@ namespace Transfer_File.File_to_DB
                         for (int totalLength = 0; totalLength < lineString.Length; totalLength += 100)
                         {
                             Array.Copy(lineString, totalLength, currentByteString, 0, 100);
-                            #region 變數指定
+                            #region 變數賦值
                             t30_dto.Stock_No = Encoding.GetEncoding(950).GetString(currentByteString, 0, 6);
                             t30_dto.Bull_Price = Convert.ToDecimal(Encoding.GetEncoding(950).GetString(currentByteString, 6, 9)) / 10000;
                             t30_dto.Ldc_Price = Convert.ToDecimal(Encoding.GetEncoding(950).GetString(currentByteString, 15, 9)) / 10000;

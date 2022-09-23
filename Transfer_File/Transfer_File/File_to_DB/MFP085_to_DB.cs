@@ -43,7 +43,7 @@ namespace Transfer_File.File_to_DB
                         {
                             Array.Copy(lineString, totalLength, currentByteString, 0, 153);
 
-                            #region 變數指定
+                            #region 變數賦值
                             mfp085_dto.Cfm01 = Encoding.GetEncoding(950).GetString(currentByteString, 0, 8);
                             mfp085_dto.Cfm02 = Encoding.GetEncoding(950).GetString(currentByteString, 8, 6);
                             mfp085_dto.Cfm03 = Convert.ToChar(Encoding.GetEncoding(950).GetString(currentByteString, 14, 1));
