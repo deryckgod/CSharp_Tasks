@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Transfer_File.DataTableFolder;
 
-namespace Transfer_File
+namespace Transfer_File.File_to_DB
 {
     class MFP085_to_DB : Txt_to_DB
     {
@@ -26,7 +26,7 @@ namespace Transfer_File
             if (ReadFileToString(fileString, ref fileStringList, false))
             {
                 int count = 0;
-                stringHistoryTemp.AppendLine(String.Format("收到檔案: {0} \r", fileString));
+                stringHistoryTemp.AppendLine(string.Format("收到檔案: {0} \r", fileString));
 
                 foreach (string mainString in fileStringList)
                 {
@@ -48,13 +48,13 @@ namespace Transfer_File
                             mfp085_dto.Cfm02 = Encoding.GetEncoding(950).GetString(currentByteString, 8, 6);
                             mfp085_dto.Cfm03 = Convert.ToChar(Encoding.GetEncoding(950).GetString(currentByteString, 14, 1));
                             mfp085_dto.Cfm04 = Encoding.GetEncoding(950).GetString(currentByteString, 15, 4);
-                            mfp085_dto.Cfm05 = (decimal)Convert.ToDecimal(Encoding.GetEncoding(950).GetString(currentByteString, 19, 9))/10000;
+                            mfp085_dto.Cfm05 = Convert.ToDecimal(Encoding.GetEncoding(950).GetString(currentByteString, 19, 9)) / 10000;
                             mfp085_dto.Cfm06 = Convert.ToDecimal(Encoding.GetEncoding(950).GetString(currentByteString, 28, 10));
                             mfp085_dto.Cfm07 = Convert.ToDecimal(Encoding.GetEncoding(950).GetString(currentByteString, 38, 3));
                             mfp085_dto.Cfm08 = Convert.ToChar(Encoding.GetEncoding(950).GetString(currentByteString, 41, 1));
                             mfp085_dto.Cfm09 = Convert.ToDecimal(Encoding.GetEncoding(950).GetString(currentByteString, 42, 3));
                             mfp085_dto.Cfm10 = Convert.ToDecimal(Encoding.GetEncoding(950).GetString(currentByteString, 45, 4));
-                            mfp085_dto.Cfm11 = (decimal)Convert.ToDecimal(Encoding.GetEncoding(950).GetString(currentByteString, 49, 3))/100;
+                            mfp085_dto.Cfm11 = Convert.ToDecimal(Encoding.GetEncoding(950).GetString(currentByteString, 49, 3)) / 100;
                             mfp085_dto.Cfm12 = Encoding.GetEncoding(950).GetString(currentByteString, 52, 1);
                             mfp085_dto.Cfm13 = Convert.ToInt32(Encoding.GetEncoding(950).GetString(currentByteString, 53, 8));
                             mfp085_dto.Cfm14 = Convert.ToInt32(Encoding.GetEncoding(950).GetString(currentByteString, 61, 8));
@@ -71,7 +71,7 @@ namespace Transfer_File
                             mfp085_dto.Cfm25 = Encoding.GetEncoding(950).GetString(currentByteString, 151, 2);
                             //stringHistoryTemp.AppendLine(String.Format("第{0}筆解析完畢\r", count + 1));
                             #endregion
-                            mySqlCommand.Parameters.Clear(); 
+                            mySqlCommand.Parameters.Clear();
 
                             #region 添加參數
                             try
@@ -121,8 +121,8 @@ namespace Transfer_File
                         }
                     }
                 }
-                stringHistoryTemp.AppendLine(String.Format("{0} 存入DB完畢 共存入{1}筆\r", fileString, count));
-                stringHistoryTemp.AppendLine(move_file.MoveFile(fileString, destinationPath)); 
+                stringHistoryTemp.AppendLine(string.Format("{0} 存入DB完畢 共存入{1}筆\r", fileString, count));
+                stringHistoryTemp.AppendLine(move_file.MoveFile(fileString, destinationPath));
                 return stringHistoryTemp;
             }
             else

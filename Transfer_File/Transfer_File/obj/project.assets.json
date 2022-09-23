@@ -2,17 +2,6 @@
   "version": 3,
   "targets": {
     "net6.0-windows7.0": {
-      "dotConnect.Express.for.MySQL/9.0.0": {
-        "type": "package",
-        "compile": {
-          "lib/Devart.Data.MySql.dll": {},
-          "lib/Devart.Data.dll": {}
-        },
-        "runtime": {
-          "lib/Devart.Data.MySql.dll": {},
-          "lib/Devart.Data.dll": {}
-        }
-      },
       "Google.Protobuf/3.19.4": {
         "type": "package",
         "compile": {
@@ -341,22 +330,6 @@
     }
   },
   "libraries": {
-    "dotConnect.Express.for.MySQL/9.0.0": {
-      "sha512": "HCuAeWqkFIVVO20wpgRtRYad4iNDViquAtWbQZc5rIZCRgLQIrkL9/WK5yC71sgkeMLtj442doXGnN2kEAAtMg==",
-      "type": "package",
-      "path": "dotconnect.express.for.mysql/9.0.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "content/app.config.transform",
-        "content/web.config.transform",
-        "dotconnect.express.for.mysql.9.0.0.nupkg.sha512",
-        "dotconnect.express.for.mysql.nuspec",
-        "lib/Devart.Data.MySql.dll",
-        "lib/Devart.Data.dll",
-        "mysql.png"
-      ]
-    },
     "Google.Protobuf/3.19.4": {
       "sha512": "fd07/ykL4O4FhqrZIELm5lmiyOHfdPg9+o+hWr6tcfRdS7tHXnImg/2wtogLzlW2eEmr0J7j6ZrZvaWOLiJbxQ==",
       "type": "package",
@@ -921,8 +894,7 @@
   },
   "projectFileDependencyGroups": {
     "net6.0-windows7.0": [
-      "MySql.Data >= 8.0.30",
-      "dotConnect.Express.for.MySQL >= 9.0.0"
+      "MySql.Data >= 8.0.30"
     ]
   },
   "packageFolders": {
@@ -972,10 +944,6 @@
           "MySql.Data": {
             "target": "Package",
             "version": "[8.0.30, )"
-          },
-          "dotConnect.Express.for.MySQL": {
-            "target": "Package",
-            "version": "[9.0.0, )"
           }
         },
         "imports": [
@@ -1000,17 +968,5 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "已使用 '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' 而非專案目標架構 'net6.0-windows7.0' 還原了套件 'dotConnect.Express.for.MySQL 9.0.0'。此套件與您的專案並非完全相容。",
-      "libraryId": "dotConnect.Express.for.MySQL",
-      "targetGraphs": [
-        "net6.0-windows7.0"
-      ]
-    }
-  ]
+  }
 }

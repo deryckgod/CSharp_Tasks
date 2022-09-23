@@ -6,18 +6,6 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v6.0": {
-      "dotConnect.Express.for.MySQL/9.0.0": {
-        "runtime": {
-          "lib/Devart.Data.MySql.dll": {
-            "assemblyVersion": "9.0.0.0",
-            "fileVersion": "9.0.0.0"
-          },
-          "lib/Devart.Data.dll": {
-            "assemblyVersion": "5.0.2938.0",
-            "fileVersion": "5.0.2938.0"
-          }
-        }
-      },
       "Google.Protobuf/3.19.4": {
         "runtime": {
           "lib/net5.0/Google.Protobuf.dll": {
@@ -272,13 +260,6 @@
     }
   },
   "libraries": {
-    "dotConnect.Express.for.MySQL/9.0.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-HCuAeWqkFIVVO20wpgRtRYad4iNDViquAtWbQZc5rIZCRgLQIrkL9/WK5yC71sgkeMLtj442doXGnN2kEAAtMg==",
-      "path": "dotconnect.express.for.mysql/9.0.0",
-      "hashPath": "dotconnect.express.for.mysql.9.0.0.nupkg.sha512"
-    },
     "Google.Protobuf/3.19.4": {
       "type": "package",
       "serviceable": true,
