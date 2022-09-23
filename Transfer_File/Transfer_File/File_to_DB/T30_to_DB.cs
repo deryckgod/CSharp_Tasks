@@ -2,93 +2,16 @@
 using System;
 using System.Collections.Generic;
 using System.Configuration;
-using System.Drawing.Drawing2D;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Transfer_File.DataTableFolder;
 
-namespace Transfer_File
+namespace Transfer_File.File_to_DB
 {
-    internal class Txt_to_DB
+    internal class T30_to_DB : Txt_to_DB
     {
-        StringBuilder stringHistory;
-
-        string path = ConfigurationManager.AppSettings["path"];
         string destinationPath = ConfigurationManager.AppSettings["destinationPath"];
-
-        public bool ReadFileToString(string fileName, ref List<string> fileStringList, bool noSpace = false)
-        {
-            fileStringList.Clear();
-            if (File.Exists(fileName))
-            {
-                // 解決.NET Core簡化編碼問題， Big5錯誤訊息消失
-                Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
-
-                try
-                {
-                    // StreamReader改用LINQ讀取
-                    fileStringList = File.ReadLines(fileName, Encoding.GetEncoding("big5")).ToList();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-                return true;
-            }
-            return false;
-        }
-
-        public virtual StringBuilder TxtToMysql(MySqlConnection mySqlConnection, ref bool checkFile, ref bool checkOnCreated)
-        {
-            MFP085_to_DB mfp085_to_db = new MFP085_to_DB();
-            StringBuilder stringHistoryTemp = new StringBuilder(); // 不能設成全域變數否則在同個程式中new會洗掉之前MFP085的訊息
-
-            DirectoryInfo directoryInfo = new DirectoryInfo(path);
-            try
-            {
-                foreach (FileInfo fileInfo in directoryInfo.GetFiles("*.TXT"))
-                {
-                    checkFile = true;
-                    // 避免create時 按btnConnect有衝突報錯
-                    if (!checkOnCreated)
-                    {
-                        if (fileInfo.ToString().Contains("T30"))
-                        {
-                            try
-                            {
-                                stringHistoryTemp.AppendLine(this.InputDataToMysql(mySqlConnection, fileInfo.ToString()).ToString());
-                            }
-                            catch (Exception e)
-                            {
-                                MessageBox.Show(e.Message);
-                            }
-                        }
-                        else if (fileInfo.ToString().Contains("MFP085"))
-                        {
-                            try
-                            {
-                                stringHistoryTemp.AppendLine(mfp085_to_db.InputDataToMysql(mySqlConnection, fileInfo.ToString()).ToString());
-                            }
-                            catch(Exception e)
-                            {
-                                MessageBox.Show( e.Message);
-                            }
-                        }
-                    }
-                }
-                stringHistory = stringHistoryTemp; 
-                checkFile = false; // 原資料夾內處理完畢
-            }
-            catch(Exception e)
-            {
-                MessageBox.Show("匯入MySql例外 : "+e.Message);
-            }
-            return stringHistory;
-        }
-
-        public virtual StringBuilder InputDataToMysql(MySqlConnection mySqlConnection, String fileString)
+        public override StringBuilder InputDataToMysql(MySqlConnection mySqlConnection, string fileString)
         {
             List<string> fileStringList = new List<string>();
             byte[] currentByteString = new byte[101]; // 存取當前100個byte資料
@@ -101,12 +24,12 @@ namespace Transfer_File
             if (ReadFileToString(fileString, ref fileStringList, false))
             {
                 // 在文字框顯示資料
-                stringHistoryTemp.AppendLine(String.Format("收到檔案: {0} \r", fileString));
+                stringHistoryTemp.AppendLine(string.Format("收到檔案: {0} \r", fileString));
                 int count = 0;
                 foreach (string mainString in fileStringList)
                 {
                     byte[] lineString = Encoding.GetEncoding(950).GetBytes(mainString);
-                    
+
                     // 插入資料到DB
                     using (MySqlCommand mySqlCommand = mySqlConnection.CreateCommand())
                     {
@@ -118,35 +41,35 @@ namespace Transfer_File
                             Array.Copy(lineString, totalLength, currentByteString, 0, 100);
                             #region 變數指定
                             t30_dto.Stock_No = Encoding.GetEncoding(950).GetString(currentByteString, 0, 6);
-                            t30_dto.Bull_Price = (decimal)(Convert.ToDecimal(Encoding.GetEncoding(950).GetString(currentByteString, 6, 9)) / 10000);
-                            t30_dto.Ldc_Price = (decimal)(Convert.ToDecimal(Encoding.GetEncoding(950).GetString(currentByteString, 15, 9)) / 10000);
-                            t30_dto.Bear_Price = (decimal)(Convert.ToDecimal(Encoding.GetEncoding(950).GetString(currentByteString, 24, 9)) / 10000);
+                            t30_dto.Bull_Price = Convert.ToDecimal(Encoding.GetEncoding(950).GetString(currentByteString, 6, 9)) / 10000;
+                            t30_dto.Ldc_Price = Convert.ToDecimal(Encoding.GetEncoding(950).GetString(currentByteString, 15, 9)) / 10000;
+                            t30_dto.Bear_Price = Convert.ToDecimal(Encoding.GetEncoding(950).GetString(currentByteString, 24, 9)) / 10000;
                             t30_dto.Last_Mth_Date = Convert.ToInt32(Encoding.GetEncoding(950).GetString(currentByteString, 33, 8));
                             t30_dto.SetType = Convert.ToChar(Encoding.GetEncoding(950).GetString(currentByteString, 41, 1));
                             t30_dto.Mark_W = Convert.ToChar(Encoding.GetEncoding(950).GetString(currentByteString, 42, 1));
                             t30_dto.Mark_P = Convert.ToChar(Encoding.GetEncoding(950).GetString(currentByteString, 43, 1));
-                            t30_dto.Mark_L = Convert.ToChar(Encoding.GetEncoding(950).GetString(currentByteString,  44, 1));
+                            t30_dto.Mark_L = Convert.ToChar(Encoding.GetEncoding(950).GetString(currentByteString, 44, 1));
                             t30_dto.Ind_Code = Encoding.GetEncoding(950).GetString(currentByteString, 45, 2);
                             t30_dto.Stk_Code = Encoding.GetEncoding(950).GetString(currentByteString, 47, 2);
-                            t30_dto.Mark_M = Convert.ToChar(Encoding.GetEncoding(950).GetString(currentByteString,  49, 1));
+                            t30_dto.Mark_M = Convert.ToChar(Encoding.GetEncoding(950).GetString(currentByteString, 49, 1));
 
                             // STOCK_NAME
                             t30_dto.Stock_Name = Encoding.GetEncoding(950).GetString(currentByteString, 50, 16);
 
                             // MARK_W_DETAILS
                             t30_dto.Match_Interval = Convert.ToInt32(Encoding.GetEncoding(950).GetString(currentByteString, 66, 3));
-                            t30_dto.Order_Limit = Convert.ToInt32(Encoding.GetEncoding(950).GetString(currentByteString,  69, 6));
-                            t30_dto.Orders_Limit = Convert.ToInt32(Encoding.GetEncoding(950).GetString(currentByteString,  75, 6));
-                            t30_dto.Prepay_Rate = Convert.ToInt32(Encoding.GetEncoding(950).GetString(currentByteString,  81, 3));
+                            t30_dto.Order_Limit = Convert.ToInt32(Encoding.GetEncoding(950).GetString(currentByteString, 69, 6));
+                            t30_dto.Orders_Limit = Convert.ToInt32(Encoding.GetEncoding(950).GetString(currentByteString, 75, 6));
+                            t30_dto.Prepay_Rate = Convert.ToInt32(Encoding.GetEncoding(950).GetString(currentByteString, 81, 3));
                             t30_dto.Mark_S = Convert.ToChar(Encoding.GetEncoding(950).GetString(currentByteString, 84, 1));
                             t30_dto.Mark_F = Convert.ToChar(Encoding.GetEncoding(950).GetString(currentByteString, 85, 1));
-                            t30_dto.Mark_Day_Trade = Convert.ToChar(Encoding.GetEncoding(950).GetString(currentByteString,  86, 1));
-                            t30_dto.Stk_CTGCD = Convert.ToChar(Encoding.GetEncoding(950).GetString(currentByteString,  87, 1));
+                            t30_dto.Mark_Day_Trade = Convert.ToChar(Encoding.GetEncoding(950).GetString(currentByteString, 86, 1));
+                            t30_dto.Stk_CTGCD = Convert.ToChar(Encoding.GetEncoding(950).GetString(currentByteString, 87, 1));
                             t30_dto.Filler = Encoding.GetEncoding(950).GetString(currentByteString, 88, 12);
 
                             //stringHistoryTemp.AppendLine(String.Format("第{0}筆解析完畢\r", count + 1));
                             #endregion
-                            mySqlCommand.Parameters.Clear(); 
+                            mySqlCommand.Parameters.Clear();
 
                             #region 添加參數
                             try
@@ -192,8 +115,8 @@ namespace Transfer_File
                         }
                     }
                 }
-                stringHistoryTemp.AppendLine(String.Format("{0} 存入DB完畢 共存入{1}筆\r", fileString, count));
-                stringHistoryTemp.AppendLine(move_file.MoveFile(fileString, destinationPath)); 
+                stringHistoryTemp.AppendLine(string.Format("{0} 存入DB完畢 共存入{1}筆\r", fileString, count));
+                stringHistoryTemp.AppendLine(move_file.MoveFile(fileString, destinationPath));
                 return stringHistoryTemp;
             }
             else

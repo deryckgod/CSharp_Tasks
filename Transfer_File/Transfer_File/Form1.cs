@@ -7,6 +7,7 @@ using static System.Net.WebRequestMethods;
 using File = System.IO.File;
 using System.Data;
 using System.Reflection;
+using Transfer_File.File_to_DB;
 
 namespace Transfer_File
 {
@@ -17,8 +18,10 @@ namespace Transfer_File
         StringBuilder stringHistoryTemp;
         bool checkFile = false; // 辨識有沒有尚存的檔案在資料夾
         bool checkOnCreated = false; // 辨識是否有新的檔案進入
+        int checkCreateTime = 0; // 計算Create次數
 
         Txt_to_DB txt_To_DB;
+        T30_to_DB t30_to_db;
         MFP085_to_DB mfp085_to_db;
         DirectoryInfo directoryInfo;
         MySqlConnection mySqlConnection;
@@ -112,43 +115,44 @@ namespace Transfer_File
         }
         private void FileSystemWatcher_Created(object sender, FileSystemEventArgs events)
         {
-            txt_To_DB = new Txt_to_DB();
+            checkCreateTime++;
+            t30_to_db = new T30_to_DB();
             mfp085_to_db = new MFP085_to_DB();
             directoryInfo = new DirectoryInfo(events.FullPath.ToString()); // 當多個檔案同時轉入時可保留個檔案資訊
-            while (true)
+            
+            if (!checkFile)
             {
-                if (!checkFile)
+                try
                 {
-                    try
+                    checkOnCreated = true; 
+                    stringHistoryTemp = new StringBuilder(); // 放在checkFile中是避免當前檔案處理中途有其他檔案轉入造成歷史資訊中斷
+                    stringHistoryTemp.AppendLine("新建檔案於:" + directoryInfo.FullName.Replace(directoryInfo.Name, ""));
+                    stringHistoryTemp.AppendLine("新建檔案名稱:" + directoryInfo.Name);
+                    stringHistoryTemp.AppendLine("建立時間:" + directoryInfo.CreationTime.ToString());
+                    stringHistoryTemp.AppendLine("目錄下共有:" + directoryInfo.Parent.GetFiles().Count() + "檔案");
+                    stringHistoryTemp.AppendLine("目錄下共有:" + directoryInfo.Parent.GetDirectories().Count() + "資料夾");
+                    using (mySqlConnection = Connect())
                     {
-                        checkOnCreated = true; 
-                        stringHistoryTemp = new StringBuilder(); // 放在checkFile中是避免當前檔案處理中途有其他檔案轉入造成歷史資訊中斷
-                        stringHistoryTemp.AppendLine("新建檔案於:" + directoryInfo.FullName.Replace(directoryInfo.Name, ""));
-                        stringHistoryTemp.AppendLine("新建檔案名稱:" + directoryInfo.Name);
-                        stringHistoryTemp.AppendLine("建立時間:" + directoryInfo.CreationTime.ToString());
-                        stringHistoryTemp.AppendLine("目錄下共有:" + directoryInfo.Parent.GetFiles().Count() + "檔案");
-                        stringHistoryTemp.AppendLine("目錄下共有:" + directoryInfo.Parent.GetDirectories().Count() + "資料夾");
-                        using (mySqlConnection = Connect())
+                        if (directoryInfo.Name.ToString().Contains("T30"))
                         {
-                            if (directoryInfo.Name.ToString().Contains("T30"))
-                            {
-                                stringHistoryTemp.AppendLine(txt_To_DB.InputDataToMysql(mySqlConnection, directoryInfo.FullName.ToString()).ToString());
-                            }
-                            else if (directoryInfo.Name.ToString().Contains("MFP085"))
-                            {
-                                stringHistoryTemp.AppendLine(mfp085_to_db.InputDataToMysql(mySqlConnection, directoryInfo.FullName.ToString()).ToString());
-                            }
+                            stringHistoryTemp.AppendLine(t30_to_db.InputDataToMysql(mySqlConnection, directoryInfo.FullName.ToString()).ToString());
                         }
-                        stringHistory = stringHistoryTemp; // 從原本的inputDataToMysql輸出移至created下面輸出 避免跟直接txtConditional.Text輸出衝突
-                        break;
+                        else if (directoryInfo.Name.ToString().Contains("MFP085"))
+                        {
+                            stringHistoryTemp.AppendLine(mfp085_to_db.InputDataToMysql(mySqlConnection, directoryInfo.FullName.ToString()).ToString());
+                        }
                     }
-                    catch (Exception e)
-                    {
-                        MessageBox.Show("新增檔案例外 : "+e.Message);
-                    }
-                    checkOnCreated = false;
+                    stringHistoryTemp.AppendLine("Create 次數:" + checkCreateTime.ToString());
+                    stringHistory = stringHistoryTemp; // 從原本的inputDataToMysql輸出移至created下面輸出 避免跟直接txtConditional.Text輸出衝突
+                        
                 }
+                catch (Exception e)
+                {
+                    MessageBox.Show("新增檔案例外 : "+e.Message);
+                }
+                checkOnCreated = false;
             }
+            
         }
         
         private void StoreHistory()

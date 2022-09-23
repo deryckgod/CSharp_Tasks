@@ -70,8 +70,6 @@ D:\Desktop\ALPED\Systex\Git_Repository\CSharp_Tasks\deryckgod\CSharp_Tasks\Trans
 D:\Desktop\ALPED\Systex\Git_Repository\CSharp_Tasks\deryckgod\CSharp_Tasks\Transfer_File\Transfer_File\bin\Debug\net6.0-windows\Transfer_File.runtimeconfig.json
 D:\Desktop\ALPED\Systex\Git_Repository\CSharp_Tasks\deryckgod\CSharp_Tasks\Transfer_File\Transfer_File\bin\Debug\net6.0-windows\Transfer_File.dll
 D:\Desktop\ALPED\Systex\Git_Repository\CSharp_Tasks\deryckgod\CSharp_Tasks\Transfer_File\Transfer_File\bin\Debug\net6.0-windows\Transfer_File.pdb
-D:\Desktop\ALPED\Systex\Git_Repository\CSharp_Tasks\deryckgod\CSharp_Tasks\Transfer_File\Transfer_File\bin\Debug\net6.0-windows\Devart.Data.MySql.dll
-D:\Desktop\ALPED\Systex\Git_Repository\CSharp_Tasks\deryckgod\CSharp_Tasks\Transfer_File\Transfer_File\bin\Debug\net6.0-windows\Devart.Data.dll
 D:\Desktop\ALPED\Systex\Git_Repository\CSharp_Tasks\deryckgod\CSharp_Tasks\Transfer_File\Transfer_File\bin\Debug\net6.0-windows\Google.Protobuf.dll
 D:\Desktop\ALPED\Systex\Git_Repository\CSharp_Tasks\deryckgod\CSharp_Tasks\Transfer_File\Transfer_File\bin\Debug\net6.0-windows\K4os.Compression.LZ4.dll
 D:\Desktop\ALPED\Systex\Git_Repository\CSharp_Tasks\deryckgod\CSharp_Tasks\Transfer_File\Transfer_File\bin\Debug\net6.0-windows\K4os.Compression.LZ4.Streams.dll
