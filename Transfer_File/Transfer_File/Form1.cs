@@ -21,18 +21,14 @@ namespace Transfer_File
         bool checkOnCreated = false; // 辨識是否有新的檔案進入
         int checkCreateTime = 0; // 計算Create次數
 
-        Txt_to_DB txt_To_DB;
-        T30_to_DB t30_to_db;
-        MFP085_to_DB mfp085_to_db;
-        DirectoryInfo directoryInfo;
         MySqlConnection mySqlConnection;
-        Search_from_Mysql search_From_Mysql;
         FileSystemWatcher fileSystemWatcher = new FileSystemWatcher();
 
         private delegate void conditionShow(string conditionBox);
 
         string path = ConfigurationManager.AppSettings["path"];
         #endregion
+
         public Form1()
         {
             InitializeComponent();
@@ -61,8 +57,8 @@ namespace Transfer_File
             {
                 using (mySqlConnection = Connect())
                 {
-                    txt_To_DB = new Txt_to_DB();
-                    stringHistory = txt_To_DB.TxtToMysql(mySqlConnection, ref checkFile, ref checkOnCreated);
+                    Btn_Insert btn_insert = new Btn_Insert();
+                    stringHistory = btn_insert.TxtToMysql(mySqlConnection, ref checkFile, ref checkOnCreated);
                 }
             }
             catch (Exception ex)
@@ -77,7 +73,7 @@ namespace Transfer_File
             {
                 using (mySqlConnection = Connect())
                 {
-                    search_From_Mysql = new Search_from_Mysql();
+                    Search_from_Mysql search_From_Mysql = new Search_from_Mysql();
                     stringHistory = search_From_Mysql.SearchT30FromMysql(mySqlConnection);
                 }
             }
@@ -117,31 +113,33 @@ namespace Transfer_File
         private void FileSystemWatcher_Created(object sender, FileSystemEventArgs events)
         {
             checkCreateTime++;
-            t30_to_db = new T30_to_DB();
-            mfp085_to_db = new MFP085_to_DB();
-            directoryInfo = new DirectoryInfo(events.FullPath.ToString()); // 當多個檔案同時轉入時可保留個檔案資訊
+            DirectoryInfo directoryInfo = new DirectoryInfo(events.FullPath.ToString()); // 當多個檔案同時轉入時可保留個檔案資訊
             while (true)
             {
                 if (!checkFile)
                 {
+                    checkOnCreated = true; 
+                    stringHistoryTemp = new StringBuilder(); // 放在checkFile中是避免當前檔案處理中途有其他檔案轉入造成歷史資訊中斷
+                    stringHistoryTemp.AppendLine("新建檔案於:" + directoryInfo.FullName.Replace(directoryInfo.Name, ""));
+                    stringHistoryTemp.AppendLine("新建檔案名稱:" + directoryInfo.Name);
+                    stringHistoryTemp.AppendLine("檔案建立時間:" + directoryInfo.CreationTime.ToString());
+                    stringHistoryTemp.AppendLine("檔案執行時間:" + DateTime.Now.ToString());
+                    stringHistoryTemp.AppendLine("目錄下共有:" + directoryInfo.Parent.GetFiles().Count() + "檔案");
+                    stringHistoryTemp.AppendLine("目錄下共有:" + directoryInfo.Parent.GetDirectories().Count() + "資料夾");
                     try
-                    {
-                        checkOnCreated = true; 
-                        stringHistoryTemp = new StringBuilder(); // 放在checkFile中是避免當前檔案處理中途有其他檔案轉入造成歷史資訊中斷
-                        stringHistoryTemp.AppendLine("新建檔案於:" + directoryInfo.FullName.Replace(directoryInfo.Name, ""));
-                        stringHistoryTemp.AppendLine("新建檔案名稱:" + directoryInfo.Name);
-                        stringHistoryTemp.AppendLine("檔案建立時間:" + directoryInfo.CreationTime.ToString());
-                        stringHistoryTemp.AppendLine("檔案執行時間:" + DateTime.Now.ToString());
-                        stringHistoryTemp.AppendLine("目錄下共有:" + directoryInfo.Parent.GetFiles().Count() + "檔案");
-                        stringHistoryTemp.AppendLine("目錄下共有:" + directoryInfo.Parent.GetDirectories().Count() + "資料夾");
+                    {    
                         using (mySqlConnection = Connect())
                         {
                             if (directoryInfo.Name.ToString().Contains("T30"))
                             {
+                                // 轉檔
+                                Txt_to_DB t30_to_db = new T30_to_DB();
                                 stringHistoryTemp.AppendLine(t30_to_db.InputDataToMysql(mySqlConnection, directoryInfo.FullName.ToString()).ToString());
                             }
                             else if (directoryInfo.Name.ToString().Contains("MFP085"))
                             {
+                                // 轉檔
+                                Txt_to_DB mfp085_to_db = new MFP085_to_DB();
                                 stringHistoryTemp.AppendLine(mfp085_to_db.InputDataToMysql(mySqlConnection, directoryInfo.FullName.ToString()).ToString());
                             }
                         }
@@ -156,8 +154,6 @@ namespace Transfer_File
                     checkOnCreated = false;
                 }
             }
-            
-            
         }
         
         private void StoreHistory()
@@ -199,7 +195,7 @@ namespace Transfer_File
             {
                 using (mySqlConnection = Connect())
                 {
-                    search_From_Mysql = new Search_from_Mysql();
+                    Search_from_Mysql search_From_Mysql = new Search_from_Mysql();
                     stringHistory = search_From_Mysql.SearchHFP085FromMysql(mySqlConnection);
                 }
             }
