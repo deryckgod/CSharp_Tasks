@@ -46,7 +46,7 @@ namespace Transfer_File
             stringHistoryTemp = new StringBuilder();
 
             // 查詢資料表全部資料
-            string sql = "SELECT * From t30.hfp085";
+            string sql = "SELECT * From t30.mfp085";
             try
             {
                 using (MySqlCommand mySqlCommand = new MySqlCommand(sql, conn))

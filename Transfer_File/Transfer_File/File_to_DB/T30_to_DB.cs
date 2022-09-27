@@ -23,9 +23,12 @@ namespace Transfer_File.File_to_DB
             
             if (ReadFileToString(fileString, ref fileStringList, false))
             {
+                int count_insert = 0;
+                int count_update = 0;
+
                 // 在文字框顯示資料
                 stringHistoryTemp.AppendLine(string.Format("收到檔案: {0} \r", fileString));
-                int count = 0;
+                
                 foreach (string mainString in fileStringList)
                 {
                     byte[] lineString = Encoding.GetEncoding(950).GetBytes(mainString);
@@ -33,12 +36,11 @@ namespace Transfer_File.File_to_DB
                     // 插入資料到DB
                     using (MySqlCommand mySqlCommand = mySqlConnection.CreateCommand())
                     {
-                        mySqlCommand.CommandText = "insert into t30.t30  (`STOCK-NO`,`BULL-PRICE`,`LDC-PRICE`,`BEAR-PRICE`, `LAST-MTH-DATE`,`SETTYPE`,`MARK-W`,`MARK-P`,`MARK-L`,`IND-CODE`,`STK-CODE`,`MARK-M`,`STOCK-NAME`,`MATCH-INTERVAL`, `ORDER-LIMIT`,`ORDERS-LIMIT`,`PREPAY-RATE`,`MARK-S`,`MARK-F`,`MARK-DAY-TRADE`,`STK-CTGCD`,`FILLER`) values (@STOCK_NO, @BULL_PRICE, @LDC_PRICE, @BEAR_PRICE, @LAST_MTH_DATE, @SETTYPE, @MARK_W, @MARK_P, @MARK_L, @IND_CODE, @STK_CODE, @MARK_M, @STOCK_NAME, @MATCH_INTERVAL, @ORDER_LIMIT, @ORDERS_LIMIT, @PREPAY_RATE, @MARK_S, @MARK_F,@MARK_DAY_TRADE, @STK_CTGCD, @FILLER)";
-
                         // 每個資料都是100位元，所以以100為底跳著讀
                         for (int totalLength = 0; totalLength < lineString.Length; totalLength += 100)
                         {
                             Array.Copy(lineString, totalLength, currentByteString, 0, 100);
+
                             #region 變數賦值
                             t30Rows._STOCK_NO= Encoding.GetEncoding(950).GetString(currentByteString, 0, 6);
                             t30Rows._BULL_PRICE = Convert.ToDecimal(Encoding.GetEncoding(950).GetString(currentByteString, 6, 9)) / 10000;
@@ -69,6 +71,8 @@ namespace Transfer_File.File_to_DB
 
                             //stringHistoryTemp.AppendLine(String.Format("第{0}筆解析完畢\r", count + 1));
                             #endregion
+
+                            mySqlCommand.CommandText = "insert ignore into t30.t30  (`STOCK-NO`,`BULL-PRICE`,`LDC-PRICE`,`BEAR-PRICE`, `LAST-MTH-DATE`,`SETTYPE`,`MARK-W`,`MARK-P`,`MARK-L`,`IND-CODE`,`STK-CODE`,`MARK-M`,`STOCK-NAME`,`MATCH-INTERVAL`, `ORDER-LIMIT`,`ORDERS-LIMIT`,`PREPAY-RATE`,`MARK-S`,`MARK-F`,`MARK-DAY-TRADE`,`STK-CTGCD`,`FILLER`) values (@STOCK_NO, @BULL_PRICE, @LDC_PRICE, @BEAR_PRICE, @LAST_MTH_DATE, @SETTYPE, @MARK_W, @MARK_P, @MARK_L, @IND_CODE, @STK_CODE, @MARK_M, @STOCK_NAME, @MATCH_INTERVAL, @ORDER_LIMIT, @ORDERS_LIMIT, @PREPAY_RATE, @MARK_S, @MARK_F,@MARK_DAY_TRADE, @STK_CTGCD, @FILLER)";
                             mySqlCommand.Parameters.Clear();
 
                             #region 添加參數
@@ -105,12 +109,23 @@ namespace Transfer_File.File_to_DB
 
                             if (mySqlCommand.ExecuteNonQuery() > 0)
                             {
-                                count++;
+                                count_insert++;
+                            }
+                            else
+                            {
+                                mySqlCommand.CommandText = "replace into t30.t30  (`STOCK-NO`,`BULL-PRICE`,`LDC-PRICE`,`BEAR-PRICE`, `LAST-MTH-DATE`,`SETTYPE`,`MARK-W`,`MARK-P`,`MARK-L`,`IND-CODE`,`STK-CODE`,`MARK-M`,`STOCK-NAME`,`MATCH-INTERVAL`, `ORDER-LIMIT`,`ORDERS-LIMIT`,`PREPAY-RATE`,`MARK-S`,`MARK-F`,`MARK-DAY-TRADE`,`STK-CTGCD`,`FILLER`) values (@STOCK_NO, @BULL_PRICE, @LDC_PRICE, @BEAR_PRICE, @LAST_MTH_DATE, @SETTYPE, @MARK_W, @MARK_P, @MARK_L, @IND_CODE, @STK_CODE, @MARK_M, @STOCK_NAME, @MATCH_INTERVAL, @ORDER_LIMIT, @ORDERS_LIMIT, @PREPAY_RATE, @MARK_S, @MARK_F,@MARK_DAY_TRADE, @STK_CTGCD, @FILLER)";
+                                if (mySqlCommand.ExecuteNonQuery() > 0)
+                                {
+                                    count_update++;
+                                }
                             }
                         }
                     }
                 }
-                stringHistoryTemp.AppendLine(string.Format("{0} 存入DB完畢 共存入{1}筆\r", fileString, count));
+                if (count_insert > 0)
+                    stringHistoryTemp.AppendLine(string.Format("{0} 存入DB完畢 共存入{1}筆\r", fileString, count_insert));
+                if (count_update > 0)
+                    stringHistoryTemp.AppendLine(string.Format("{0} 更新DB完畢 共更新{1}筆\r", fileString, count_update));
                 stringHistoryTemp.AppendLine(move_file.MoveFile(fileString, destinationPath));
                 return stringHistoryTemp;
             }

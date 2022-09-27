@@ -25,7 +25,8 @@ namespace Transfer_File.File_to_DB
 
             if (ReadFileToString(fileString, ref fileStringList, false))
             {
-                int count = 0;
+                int count_insert = 0;
+                int count_update = 0;
                 stringHistoryTemp.AppendLine(string.Format("收到檔案: {0} \r", fileString));
 
                 foreach (string mainString in fileStringList)
@@ -36,8 +37,6 @@ namespace Transfer_File.File_to_DB
                     // 插入資料到指定資料表
                     using (MySqlCommand mySqlCommand = mySqlConnection.CreateCommand())
                     {
-                        mySqlCommand.CommandText = "insert into t30.mfp085  (CFM01,CFM02,CFM03,CFM04,CFM05,CFM06,CFM07,CFM08,CFM09,CFM10,CFM11,CFM12,CFM13,CFM14,CFM15,CFM16,CFM17,CFM18,CFM19,CFM20,CFM21,CFM22,CFM23,CFM24,CFM25) values (@cfm01,@cfm02,@cfm03,@cfm04,@cfm05,@cfm06,@cfm07,@cfm08,@cfm09,@cfm10,@cfm11,@cfm12,@cfm13,@cfm14,@cfm15,@cfm16,@cfm17,@cfm18,@cfm19,@cfm20,@cfm21,@cfm22,@cfm23,@cfm24,@cfm25)";
-
                         // 每個資料都是153位元，所以以153為底跳著讀
                         for (int totalLength = 0; totalLength < lineString.Length; totalLength += 153)
                         {
@@ -71,6 +70,8 @@ namespace Transfer_File.File_to_DB
                             mfp085Rows.CFM25 = Encoding.GetEncoding(950).GetString(currentByteString, 151, 2);
                             //stringHistoryTemp.AppendLine(String.Format("第{0}筆解析完畢\r", count + 1));
                             #endregion
+
+                            mySqlCommand.CommandText = "insert ignore into t30.mfp085  (CFM01,CFM02,CFM03,CFM04,CFM05,CFM06,CFM07,CFM08,CFM09,CFM10,CFM11,CFM12,CFM13,CFM14,CFM15,CFM16,CFM17,CFM18,CFM19,CFM20,CFM21,CFM22,CFM23,CFM24,CFM25) values (@cfm01,@cfm02,@cfm03,@cfm04,@cfm05,@cfm06,@cfm07,@cfm08,@cfm09,@cfm10,@cfm11,@cfm12,@cfm13,@cfm14,@cfm15,@cfm16,@cfm17,@cfm18,@cfm19,@cfm20,@cfm21,@cfm22,@cfm23,@cfm24,@cfm25)";// +
                             mySqlCommand.Parameters.Clear();
 
                             #region 添加參數
@@ -110,12 +111,24 @@ namespace Transfer_File.File_to_DB
 
                             if (mySqlCommand.ExecuteNonQuery() > 0)
                             {
-                                count++;
+                                count_insert++;
+                            }
+                            else
+                            {
+                                // 更新取代
+                                mySqlCommand.CommandText = "replace into t30.mfp085  (CFM01,CFM02,CFM03,CFM04,CFM05,CFM06,CFM07,CFM08,CFM09,CFM10,CFM11,CFM12,CFM13,CFM14,CFM15,CFM16,CFM17,CFM18,CFM19,CFM20,CFM21,CFM22,CFM23,CFM24,CFM25) values (@cfm01,@cfm02,@cfm03,@cfm04,@cfm05,@cfm06,@cfm07,@cfm08,@cfm09,@cfm10,@cfm11,@cfm12,@cfm13,@cfm14,@cfm15,@cfm16,@cfm17,@cfm18,@cfm19,@cfm20,@cfm21,@cfm22,@cfm23,@cfm24,@cfm25)";// +
+                                if (mySqlCommand.ExecuteNonQuery() > 0)
+                                {
+                                    count_update++;
+                                }
                             }
                         }
                     }
                 }
-                stringHistoryTemp.AppendLine(string.Format("{0} 存入DB完畢 共存入{1}筆\r", fileString, count));
+                if (count_insert > 0) 
+                    stringHistoryTemp.AppendLine(string.Format("{0} 存入DB完畢 共存入{1}筆\r", fileString, count_insert));
+                if (count_update > 0) 
+                    stringHistoryTemp.AppendLine(string.Format("{0} 更新DB完畢 共更新{1}筆\r", fileString, count_update));
                 stringHistoryTemp.AppendLine(move_file.MoveFile(fileString, destinationPath));
                 return stringHistoryTemp;
             }
@@ -127,3 +140,10 @@ namespace Transfer_File.File_to_DB
         }
     }
 }
+
+//" on duplicate key update  CFM02 = @cfm02, CFM03 = @cfm03, CFM04 = @cfm04, CFM05 = @cfm05, CFM06 = @cfm06, CFM07 = @cfm07, CFM08 = @cfm08, CFM09 = @cfm09, CFM10 = @cfm10, CFM11 = @cfm11, CFM12 = @cfm12, CFM13 = @cfm13, CFM14 = @cfm14, CFM15 = @cfm15, CFM16 = @cfm16, CFM17 = @cfm17, CFM18 = @cfm18, CFM19 = @cfm19, CFM20 = @cfm20, CFM21 = @cfm21, CFM22 = @cfm22, CFM23 = @cfm23, CFM24 = @cfm24, CFM25 = @cfm25";
+//mySqlCommand.CommandText = "IF EXISTS (SELECT * FROM t30.mfp085 WHERE CFM01=@cfm01)" +
+//    " UPDATE `t30.mfp085` SET (CFM02 = @cfm02, CFM03 = @cfm03, CFM04 = @cfm04, CFM05 = @cfm05, CFM06 = @cfm06, CFM07 = @cfm07, CFM08 = @cfm08, CFM09 = @cfm09, CFM10 = @cfm10, CFM11 = @cfm11, CFM12 = @cfm12, CFM13 = @cfm13, CFM14 = @cfm14, CFM15 = @cfm15, CFM16 = @cfm16, CFM17 = @cfm17, CFM18 = @cfm18, CFM19 = @cfm19, CFM20 = @cfm20, CFM21 = @cfm21, CFM22 = @cfm22, CFM23 = @cfm23, CFM24 = @cfm24, CFM25 = @cfm25)" +
+//    "else" +
+//    " insert into mfp085 (CFM01,CFM02,CFM03,CFM04,CFM05,CFM06,CFM07,CFM08,CFM09,CFM10,CFM11,CFM12,CFM13,CFM14,CFM15,CFM16,CFM17,CFM18,CFM19,CFM20,CFM21,CFM22,CFM23,CFM24,CFM25) values (@cfm01,@cfm02,@cfm03,@cfm04,@cfm05,@cfm06,@cfm07,@cfm08,@cfm09,@cfm10,@cfm11,@cfm12,@cfm13,@cfm14,@cfm15,@cfm16,@cfm17,@cfm18,@cfm19,@cfm20,@cfm21,@cfm22,@cfm23,@cfm24,@cfm25)";
+
