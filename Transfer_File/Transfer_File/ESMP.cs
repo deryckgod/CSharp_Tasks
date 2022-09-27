@@ -13,7 +13,7 @@ namespace Transfer_File
         decimal bull_Price = 0;
         decimal ldc_Price = 0;
         decimal bear_Price = 0;
-        int last_Mth_Date = 0;
+        string last_Mth_Date = "";
         char setType = '0';
         char mark_W = '0';
         char mark_P = '0';
@@ -36,7 +36,7 @@ namespace Transfer_File
         public decimal Bull_Price { get => bull_Price; set => bull_Price = value; }
         public decimal Ldc_Price { get => ldc_Price; set => ldc_Price = value; }
         public decimal Bear_Price { get => bear_Price; set => bear_Price = value; }
-        public int Last_Mth_Date { get => last_Mth_Date; set => last_Mth_Date = value; }
+        public string Last_Mth_Date { get => last_Mth_Date; set => last_Mth_Date = value; }
         public char SetType { get => setType; set => setType = value; }
         public char Mark_W { get => mark_W; set => mark_W = value; }
         public char Mark_P { get => mark_P; set => mark_P = value; }
@@ -54,6 +54,8 @@ namespace Transfer_File
         public char Mark_Day_Trade { get => mark_Day_Trade; set => mark_Day_Trade = value; }
         public char Stk_CTGCD { get => stk_CTGCD; set => stk_CTGCD = value; }
         public string Filler { get => filler; set => filler = value; }
+
+
         #endregion
     }
 }
@@ -75,21 +77,47 @@ namespace Transfer_File
         decimal cfm10 = 0;
         decimal cfm11 = 0;
         string cfm12 = "";
-        int cfm13 = 0;
-        int cfm14 = 0;
-        int cfm15 = 0;
-        int cfm16 = 0;
-        int cfm17 = 0;
-        int cfm18 = 0;
-        int cfm19 = 0;
-        int cfm20 = 0;
-        int cfm21 = 0;
-        int cfm22 = 0;
+        string cfm13 = "";
+        string cfm14 = "";
+        string cfm15 = "";
+        string cfm16 = "";
+        string cfm17 = "";
+        string cfm18 = "";
+        string cfm19 = "";
+        string cfm20 = "";
+        string cfm21 = "";
+        string cfm22 = "";
         string cfm23 = "";
-        int cfm24 = 0;
+        string cfm24 = "";
         string cfm25 = "";
 
-        
+        public string Cfm01 { get => cfm01; set => cfm01 = value; }
+        public string Cfm02 { get => cfm02; set => cfm02 = value; }
+        public char Cfm03 { get => cfm03; set => cfm03 = value; }
+        public string Cfm04 { get => cfm04; set => cfm04 = value; }
+        public decimal Cfm05 { get => cfm05; set => cfm05 = value; }
+        public decimal Cfm06 { get => cfm06; set => cfm06 = value; }
+        public decimal Cfm07 { get => cfm07; set => cfm07 = value; }
+        public char Cfm08 { get => cfm08; set => cfm08 = value; }
+        public decimal Cfm09 { get => cfm09; set => cfm09 = value; }
+        public decimal Cfm10 { get => cfm10; set => cfm10 = value; }
+        public decimal Cfm11 { get => cfm11; set => cfm11 = value; }
+        public string Cfm12 { get => cfm12; set => cfm12 = value; }
+        public string Cfm13 { get => cfm13; set => cfm13 = value; }
+        public string Cfm14 { get => cfm14; set => cfm14 = value; }
+        public string Cfm15 { get => cfm15; set => cfm15 = value; }
+        public string Cfm16 { get => cfm16; set => cfm16 = value; }
+        public string Cfm17 { get => cfm17; set => cfm17 = value; }
+        public string Cfm18 { get => cfm18; set => cfm18 = value; }
+        public string Cfm19 { get => cfm19; set => cfm19 = value; }
+        public string Cfm20 { get => cfm20; set => cfm20 = value; }
+        public string Cfm21 { get => cfm21; set => cfm21 = value; }
+        public string Cfm22 { get => cfm22; set => cfm22 = value; }
+        public string Cfm23 { get => cfm23; set => cfm23 = value; }
+        public string Cfm24 { get => cfm24; set => cfm24 = value; }
+        public string Cfm25 { get => cfm25; set => cfm25 = value; }
+
+
 
 
         #endregion

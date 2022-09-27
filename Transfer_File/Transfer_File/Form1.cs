@@ -120,12 +120,12 @@ namespace Transfer_File
                 {
                     checkOnCreated = true; 
                     stringHistoryTemp = new StringBuilder(); // 放在checkFile中是避免當前檔案處理中途有其他檔案轉入造成歷史資訊中斷
-                    stringHistoryTemp.AppendLine("新建檔案於:" + directoryInfo.FullName.Replace(directoryInfo.Name, ""));
-                    stringHistoryTemp.AppendLine("新建檔案名稱:" + directoryInfo.Name);
-                    stringHistoryTemp.AppendLine("檔案建立時間:" + directoryInfo.CreationTime.ToString());
-                    stringHistoryTemp.AppendLine("檔案執行時間:" + DateTime.Now.ToString());
-                    stringHistoryTemp.AppendLine("目錄下共有:" + directoryInfo.Parent.GetFiles().Count() + "檔案");
-                    stringHistoryTemp.AppendLine("目錄下共有:" + directoryInfo.Parent.GetDirectories().Count() + "資料夾");
+                    stringHistoryTemp.AppendLine("新建檔案於: " + directoryInfo.FullName.Replace(directoryInfo.Name, ""));
+                    stringHistoryTemp.AppendLine("新建檔案名稱: " + directoryInfo.Name);
+                    stringHistoryTemp.AppendLine("檔案建立時間: " + directoryInfo.CreationTime.ToString());
+                    stringHistoryTemp.AppendLine("檔案執行時間: " + DateTime.Now.ToString());
+                    stringHistoryTemp.AppendLine("目錄下共有: " + directoryInfo.Parent.GetFiles().Count() + "檔案");
+                    stringHistoryTemp.AppendLine("目錄下共有: " + directoryInfo.Parent.GetDirectories().Count() + "資料夾");
                     try
                     {    
                         using (mySqlConnection = Connect())

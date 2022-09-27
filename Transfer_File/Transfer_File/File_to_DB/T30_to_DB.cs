@@ -46,7 +46,7 @@ namespace Transfer_File.File_to_DB
                             t30Rows._BULL_PRICE = Convert.ToDecimal(Encoding.GetEncoding(950).GetString(currentByteString, 6, 9)) / 10000;
                             t30Rows._LDC_PRICE = Convert.ToDecimal(Encoding.GetEncoding(950).GetString(currentByteString, 15, 9)) / 10000;
                             t30Rows._BEAR_PRICE = Convert.ToDecimal(Encoding.GetEncoding(950).GetString(currentByteString, 24, 9)) / 10000;
-                            t30Rows._LAST_MTH_DATE = Convert.ToInt32(Encoding.GetEncoding(950).GetString(currentByteString, 33, 8));
+                            t30Rows._LAST_MTH_DATE = Encoding.GetEncoding(950).GetString(currentByteString, 33, 8);
                             t30Rows.SETTYPE= Convert.ToChar(Encoding.GetEncoding(950).GetString(currentByteString, 41, 1));
                             t30Rows._MARK_W= Convert.ToChar(Encoding.GetEncoding(950).GetString(currentByteString, 42, 1));
                             t30Rows._MARK_P = Convert.ToChar(Encoding.GetEncoding(950).GetString(currentByteString, 43, 1));

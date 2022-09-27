@@ -13,6 +13,7 @@ namespace Transfer_File
     {
         StringBuilder stringHistory;
         string path = ConfigurationManager.AppSettings["path"];
+
         public StringBuilder TxtToMysql(MySqlConnection mySqlConnection, ref bool checkFile, ref bool checkOnCreated)
         {
             StringBuilder stringHistoryTemp = new StringBuilder(); // 不能設成全域變數否則在同個程式中new會洗掉之前MFP085的訊息
