@@ -25,6 +25,7 @@ namespace Transfer_File.File_to_DB
                 {
                     // StreamReader改用LINQ讀取
                     fileStringList = File.ReadLines(fileName, Encoding.GetEncoding("big5")).ToList();
+                    //MessageBox.Show("READ FILE THREAD ID : " + Thread.CurrentThread.ManagedThreadId.ToString());
                 }
                 catch (Exception ex)
                 {
