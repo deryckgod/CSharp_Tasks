@@ -40,7 +40,7 @@ namespace Transfer_File.File_to_DB
                         for (int totalLength = 0; totalLength < lineString.Length; totalLength += 100)
                         {
                             Array.Copy(lineString, totalLength, currentByteString, 0, 100);
-
+                            if(totalLength == 1000000) MessageBox.Show("READ FILE THREAD ID : " + Thread.CurrentThread.ManagedThreadId.ToString());
                             #region 變數賦值
                             t30Rows._STOCK_NO= Encoding.GetEncoding(950).GetString(currentByteString, 0, 6);
                             t30Rows._BULL_PRICE = Convert.ToDecimal(Encoding.GetEncoding(950).GetString(currentByteString, 6, 9)) / 10000;
