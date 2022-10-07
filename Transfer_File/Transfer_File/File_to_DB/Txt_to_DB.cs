@@ -35,7 +35,7 @@ namespace Transfer_File.File_to_DB
             }
             return false;
         }
-        abstract public StringBuilder InputDataToMysql(MySqlConnection mySqlConnection, string fileString);
+        abstract public StringBuilder InputDataToMysql(MySqlConnection mySqlConnection, string fileString, string fileName);
 
     }
 }

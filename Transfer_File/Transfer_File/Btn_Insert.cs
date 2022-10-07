@@ -33,7 +33,7 @@ namespace Transfer_File
                             try
                             {
                                 T30_to_DB t30_to_db = new T30_to_DB();
-                                stringHistoryTemp.AppendLine(t30_to_db.InputDataToMysql(mySqlConnection, fileInfo.ToString()).ToString());
+                                stringHistoryTemp.AppendLine(t30_to_db.InputDataToMysql(mySqlConnection, fileInfo.ToString(), fileInfo.Name).ToString());
                             }
                             catch (Exception e)
                             {
@@ -45,7 +45,7 @@ namespace Transfer_File
                             try
                             {
                                 MFP085_to_DB mfp085_to_db = new MFP085_to_DB();
-                                stringHistoryTemp.AppendLine(mfp085_to_db.InputDataToMysql(mySqlConnection, fileInfo.ToString()).ToString());
+                                stringHistoryTemp.AppendLine(mfp085_to_db.InputDataToMysql(mySqlConnection, fileInfo.ToString(), fileInfo.Name).ToString());
                             }
                             catch (Exception e)
                             {

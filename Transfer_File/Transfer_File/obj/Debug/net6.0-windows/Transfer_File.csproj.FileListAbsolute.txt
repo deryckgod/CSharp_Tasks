@@ -81,3 +81,4 @@ D:\Desktop\ALPED\Systex\Git_Repository\CSharp_Tasks\deryckgod\CSharp_Tasks\Trans
 D:\Desktop\ALPED\Systex\Git_Repository\CSharp_Tasks\deryckgod\CSharp_Tasks\Transfer_File\Transfer_File\obj\Debug\net6.0-windows\Transfer_File.csproj.CopyComplete
 D:\Desktop\ALPED\Systex\Git_Repository\CSharp_Tasks\deryckgod\CSharp_Tasks\Transfer_File\Transfer_File\obj\Debug\net6.0-windows\Transfer_File.genruntimeconfig.cache
 D:\Desktop\ALPED\Systex\Git_Repository\CSharp_Tasks\deryckgod\CSharp_Tasks\Transfer_File\Transfer_File\obj\Debug\net6.0-windows\ref\Transfer_File.dll
+D:\Desktop\ALPED\Systex\Git_Repository\CSharp_Tasks\deryckgod\CSharp_Tasks\Transfer_File\Transfer_File\bin\Debug\net6.0-windows\log4net.dll

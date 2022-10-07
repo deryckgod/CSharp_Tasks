@@ -8,6 +8,9 @@ using File = System.IO.File;
 using System.Data;
 using System.Reflection;
 using Transfer_File.File_to_DB;
+using Transfer_File.Log4net_Converter_Layout;
+
+[assembly: log4net.Config.XmlConfigurator(ConfigFile = "D:\\Desktop\\ALPED\\Systex\\Git_Repository\\CSharp_Tasks\\deryckgod\\CSharp_Tasks\\Transfer_File\\Transfer_File\\log4net.config", Watch = true)] // 預設app.config ，但可以設定成(ConfigFile="log4net.config", Watch=true)
 
 namespace Transfer_File
 {
@@ -28,6 +31,7 @@ namespace Transfer_File
 
         string path = ConfigurationManager.AppSettings["path"];
         private static object _thisLock = new object();
+
         #endregion
 
         public Form1()
@@ -37,6 +41,7 @@ namespace Transfer_File
         }
         public MySqlConnection Connect()
         {
+            string executeStartTime = DateTime.Now.ToString("HH:mm:ss:fff");
             try
             {
                 mySqlConnection = new MySqlConnection(ConfigurationManager.ConnectionStrings["ConnectionSource"].ConnectionString);
@@ -47,13 +52,16 @@ namespace Transfer_File
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
-            }           
+                //MessageBox.Show(ex.Message);
+                string executeEndTime = DateTime.Now.ToString("HH:mm:ss:fff");
+                LogHelper.WriteError(LogHelper.BuildLogEntity(" ", executeStartTime, executeEndTime, String.Format("{0}, EX", "")),ex);
+            }
             return mySqlConnection;
         }
 
         private void BtnConnect_Click(object sender, EventArgs e)
         {
+            string executeStartTime = DateTime.Now.ToString("HH:mm:ss:fff");
             try
             {
                 using (mySqlConnection = Connect())
@@ -66,7 +74,13 @@ namespace Transfer_File
             {
                 MessageBox.Show("匯入資料例外 :" + ex.Message);
             }
-            
+            string executeEndTime = DateTime.Now.ToString("HH:mm:ss:fff");
+            LogHelper.WriteInfo(LogHelper.BuildLogEntity("TRANSFER_FILE", executeStartTime, executeEndTime, "試試看INFO"));
+            LogHelper.WriteDebug(LogHelper.BuildLogEntity("TRANSFER_FILE", executeStartTime, executeEndTime, "試試看DEBUG"));
+            LogHelper.WriteWarn(LogHelper.BuildLogEntity("TRANSFER_FILE", executeStartTime, executeEndTime, "試試看WARN"), null);//, new Exception("錯誤訊息為 : "));
+            LogHelper.WriteError(LogHelper.BuildLogEntity("TRANSFER_FILE", executeStartTime, executeEndTime, "試試看ERROR"), null);
+            LogHelper.WriteFatal(LogHelper.BuildLogEntity("TRANSFER_FILE", executeStartTime, executeEndTime, "試試看FATAL"), null);
+
         }
         private void BtnSearch_Click(object sender, EventArgs e)
         {
@@ -82,14 +96,14 @@ namespace Transfer_File
             {
                 MessageBox.Show("T30搜尋例外 :" + ex.Message);
             }
-                  
+
         }
-        
+
         private void MyFileSystemWatcher()
         {
             Thread threadStart = new Thread(StoreHistory);
             threadStart.Start();
-            MessageBox.Show("THREAD START THREAD ID : " + threadStart.ManagedThreadId.ToString());
+            //MessageBox.Show("THREAD START THREAD ID : " + threadStart.ManagedThreadId.ToString());
 
             // 設定所要監控的資料夾
             fileSystemWatcher.Path = path;
@@ -117,6 +131,8 @@ namespace Transfer_File
         }
         private void FileSystemWatcher_Created(object sender, FileSystemEventArgs events)
         {
+            // 新增開始計時
+            string executeStartTime = DateTime.Now.ToString("HH:mm:ss:fff");
             checkCreateTime++;
             Thread current_thread = Thread.CurrentThread;
             DirectoryInfo directoryInfo = new DirectoryInfo(events.FullPath.ToString()); // 當多個檔案同時轉入時可保留個檔案資訊
@@ -140,32 +156,39 @@ namespace Transfer_File
                             using (mySqlConnection = Connect())
                             {
                                 if (directoryInfo.Name.ToString().Contains("T30"))
-                                {
+                                { 
+                                    string executeEndTime = DateTime.Now.ToString("HH:mm:ss:fff");
+                                    LogHelper.WriteInfo(LogHelper.BuildLogEntity(directoryInfo.Name, executeStartTime, executeEndTime, String.Format("{0}, 轉入開始", directoryInfo.Name)));
+                                    
                                     // 轉檔
                                     Txt_to_DB t30_to_db = new T30_to_DB();
-                                    stringHistoryTemp.AppendLine(t30_to_db.InputDataToMysql(mySqlConnection, directoryInfo.FullName.ToString()).ToString());
+                                    stringHistoryTemp.AppendLine(t30_to_db.InputDataToMysql(mySqlConnection, directoryInfo.FullName, directoryInfo.Name).ToString());
                                 }
                                 else if (directoryInfo.Name.ToString().Contains("MFP085"))
                                 {
+                                    string executeEndTime = DateTime.Now.ToString("HH:mm:ss:fff");
+                                    LogHelper.WriteInfo(LogHelper.BuildLogEntity(directoryInfo.Name, executeStartTime, executeEndTime, String.Format("{0}, 轉入開始", directoryInfo.Name)));
+
                                     // 轉檔
                                     Txt_to_DB mfp085_to_db = new MFP085_to_DB();
-                                    stringHistoryTemp.AppendLine(mfp085_to_db.InputDataToMysql(mySqlConnection, directoryInfo.FullName.ToString()).ToString());
+                                    stringHistoryTemp.AppendLine(mfp085_to_db.InputDataToMysql(mySqlConnection, directoryInfo.FullName, directoryInfo.Name).ToString());
                                 }
                             }
                             stringHistoryTemp.AppendLine("Create 次數:" + checkCreateTime.ToString());
                             stringHistory = stringHistoryTemp; // 從原本的inputDataToMysql輸出移至created下面輸出 避免跟直接txtConditional.Text輸出衝突
                             break;
                         }
-                        catch (Exception e)
+                        catch (Exception ex)
                         {
-                            MessageBox.Show("新增檔案例外 : " + e.Message);
+                            string executeEndTime = DateTime.Now.ToString("HH:mm:ss:fff");
+                            LogHelper.WriteError(LogHelper.BuildLogEntity(directoryInfo.Name, executeStartTime, executeEndTime, String.Format("{0}, 新增檔案例外 : ", directoryInfo.Name)), ex);
                         }
                     }
                     checkOnCreated = false;
                 }
             }
         }
-        
+
         private void StoreHistory()
         {
             while (true)
@@ -191,7 +214,7 @@ namespace Transfer_File
                 this.txtCondition.Text += sMessage + Environment.NewLine;
             }
         }
-        
+
         private void TxtExit_Click(object sender, EventArgs e)
         {
             Environment.Exit(0);
